@@ -1,17 +1,21 @@
 const axios = require("axios");
+const { Dog, Temperament } = require("../src/db.js");
 
-const seachApi = async () => {
+const getInfoApi = async () => {
   const apiUrl = await axios.get("https://api.thedogapi.com/v1/breeds");
   const dataApi = await apiUrl.data.map((e) => {
-    const heightProm = e.height.metric.split("-");
-    const weightProm = e.weight.metric.split("-");
+    const height = e.height.metric.split("-");
+    const weight = e.weight.metric.split("-");
+    const heightMin = parseInt(height[0].trim());
+    const heightMax = parseInt(height[1]);
+    const weightMin = parseInt(weight[0].trim());
+    const weightMax = parseInt(weight[1]);
     return {
       name: e.name,
-      heightMax: heightProm[1].trim(),
-      heightMin: heightProm[0].trim(),
-      weightMax:
-        weightProm[1].trim() /* elimina todos los espacios del string */,
-      weightMin: weightProm[0].trim(),
+      heightMax: heightMax ? heightMax : "",
+      heightMin: heightMin ? heightMin : "",
+      weightMax: weightMax ? weightMax : "",
+      weightMin: weightMin ? weight : "",
       life_span: e.life_span,
       image: e.image.url,
     };
@@ -22,9 +26,17 @@ const seachApi = async () => {
 const getInfoDb = async () => {
   return await Dog.findAll({
     include: {
-      model: Temperament,
+      model: Temperament /* nuevo modelo */,
       attributes: ["name"] /* solamente trae name */,
-      throught: { attributes: [] } /* lo devuelve en forma de arreglo */,
+      throught: { attributes: [] } /*y lo devuelve en forma de arreglo */,
     },
   }); /* se trae toda la data (modulo) */
 };
+const getAllInfo = async () => {
+  const infoApi = await getInfoApi(); /* Guarda la info de la api */
+  const infoDb = await getInfoDb();
+  const allInfo = infoApi.concat(infoDb);
+  return allInfo;
+};
+
+module.exports = { getAllInfo };
