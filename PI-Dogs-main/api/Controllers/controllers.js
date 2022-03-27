@@ -11,11 +11,13 @@ const getInfoApi = async () => {
     const weightMin = parseInt(weight[0].trim());
     const weightMax = parseInt(weight[1]);
     return {
+      id: e.id,
       name: e.name,
       heightMax: heightMax ? heightMax : "",
       heightMin: heightMin ? heightMin : "",
       weightMax: weightMax ? weightMax : "",
       weightMin: weightMin ? weightMin : "",
+      temperament: e.temperament,
       life_span: e.life_span,
       image: e.image.url,
     };

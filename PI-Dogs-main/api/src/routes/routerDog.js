@@ -5,11 +5,11 @@ const router = Router();
 
 router.get("/dogs", async (req, res) => {
   try {
-    const name = req.query.name;
     const allDogs = await getAllInfo();
+    const name = req.query.name;
     if (name) {
-      const raza = allDogs.filter((dog) =>
-        dog.name.toLowerCase().includes(name.toLowerCase())
+      const raza = allDogs.filter((e) =>
+        e.name.toLowerCase().includes(name.toLowerCase())
       );
 
       raza.length < 1
@@ -23,4 +23,20 @@ router.get("/dogs", async (req, res) => {
   }
 });
 
+router.get("/dogs/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const allDogs = await getAllInfo();
+    const idDog = allDogs.find((e) => {
+      return parseInt(e.id) === parseInt(id);
+    });
+    if (idDog) {
+      res.status(200).json(idDog);
+    } else {
+      res.status(404).json("Ningun perro coincide con esa ID");
+    }
+  } catch (error) {
+    console.log(error);
+  }
+});
 module.exports = router;
