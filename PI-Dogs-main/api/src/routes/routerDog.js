@@ -1,9 +1,7 @@
-const { getAllInfo } = require("../../Controllers/controllers.js");
-const { Router } = require("express");
+const { getAllInfo } = require("../../Controllers/dogs.js");
+const router = require("express").Router();
 
-const router = Router();
-
-router.get("/dogs", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const allDogs = await getAllInfo();
     const name = req.query.name;
@@ -23,7 +21,7 @@ router.get("/dogs", async (req, res) => {
   }
 });
 
-router.get("/dogs/:id", async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const allDogs = await getAllInfo();
@@ -39,4 +37,5 @@ router.get("/dogs/:id", async (req, res) => {
     console.log(error);
   }
 });
+
 module.exports = router;
