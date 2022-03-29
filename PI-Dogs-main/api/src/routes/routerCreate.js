@@ -12,7 +12,7 @@ router.post("/", async (req, res, next) => {
     image,
   } = req.body;
   try {
-    let newDog = await Dog.create({
+    let NewDog = await Dog.create({
       name,
       heightMax,
       heightMin,
@@ -21,11 +21,11 @@ router.post("/", async (req, res, next) => {
       life_span,
       image,
     });
-
-    let newTemp = await Temperament.create({
+    console.log(temperament);
+    let temperamentNewDog = await Temperament.findAll({
       where: { name: temperament },
     });
-    newDog.addTemperament(newTemp);
+    NewDog.addTemperament(temperamentNewDog);
     res.send("Tu nueva raza perruna ha sido agregada");
   } catch (error) {
     res.send(error);

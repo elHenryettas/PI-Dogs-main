@@ -6,18 +6,20 @@ module.exports = (sequelize) => {
   sequelize.define(
     "temperament",
     {
-      id: {
-        type: DataTypes.UUID /* Numero en serie */,
+      /* id: {
+        type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
         primaryKey: true,
         allowNull: false,
-      },
+      }, */
+
       name: {
         type: DataTypes.STRING,
       },
     },
     {
       timestamps: false /* le saca el createAt y Updateat*/,
+      freezeTableName: true,
     }
   );
 };

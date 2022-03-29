@@ -5,7 +5,7 @@ const { Temperament } = require("../src/db");
 router.get("/", async (req, res) => {
   try {
     const allDogs = await getAllInfo();
-    const temperaments = [
+    const temperament = [
       ...new Set(
         allDogs
           .map((e) => e.temperament)
@@ -19,15 +19,18 @@ router.get("/", async (req, res) => {
       .sort()
       .filter((e) => e && e[0] === " ");
     /* ordena alfabeticamente y elimina strings vacios(solo hay uno pero bueno) */
-    for (let i = 0; i < temperaments.length; i++) {
-      const e = temperaments[i];
+
+    const clearTemp = temperament.map((e) => e.trim());
+
+    for (let i = 0; i < clearTemp.length; i++) {
+      const e = clearTemp[i];
       Temperament.findOrCreate({
         where: { name: e },
       });
     }
 
-    const AllTemperaments = await Temperament.findAll();
-    res.send(AllTemperaments);
+    const AllTemperament = await Temperament.findAll();
+    res.send(AllTemperament);
   } catch (error) {
     console.log(error);
   }
