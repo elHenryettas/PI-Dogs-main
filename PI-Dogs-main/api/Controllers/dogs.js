@@ -11,7 +11,7 @@ const getInfoApi = async () => {
     const weightMin = parseInt(weight[0].trim());
     const weightMax = parseInt(weight[1]);
     return {
-      id: e.id,
+      id: `${e.id}`,
       name: e.name,
       heightMax: heightMax ? heightMax : "",
       heightMin: heightMin ? heightMin : "",
