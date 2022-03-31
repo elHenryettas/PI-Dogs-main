@@ -21,10 +21,10 @@ router.get("/", async (req, res) => {
     /* ordena alfabeticamente y elimina strings vacios(solo hay uno pero bueno) */
 
     const clearTemp = temperament.map((e) => e.trim());
-
+    let descarte = clearTemp.pop();
     for (let i = 0; i < clearTemp.length; i++) {
       const e = clearTemp[i];
-      Temperament.findOrCreate({
+      await Temperament.findOrCreate({
         where: { name: e },
       });
     }

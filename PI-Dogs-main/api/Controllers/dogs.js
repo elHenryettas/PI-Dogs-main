@@ -17,7 +17,7 @@ const getInfoApi = async () => {
       heightMin: heightMin ? heightMin : "",
       weightMax: weightMax ? weightMax : "",
       weightMin: weightMin ? weightMin : "",
-      temperament: e.temperament,
+      temperament: ` ${e.temperament}`,
       life_span: e.life_span,
       image: e.image.url,
     };
