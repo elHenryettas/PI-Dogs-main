@@ -39,6 +39,7 @@ export default function Home() {
         Recargar todos los Perros
       </button>
       <div>
+        
         <select>
           <option value="ascendente">Raza Ascendente</option>
           <option value="descendente">Raza Descendente</option>
@@ -48,11 +49,11 @@ export default function Home() {
           <option value="weightMax">Peso Maximo</option>
         </select>
         <select>
-          <option value="temps">temperaments</option>
+          <option value="temps">Temperamentos</option>
         </select>
         <select>
           <option value="allDogs">Todos los perros</option>
-          <option value="dbDogs">Perros de la base de datos (form)</option>
+          <option value="dbDogs">Perros creados</option>
         </select>
         <Paginado
           dogsPerPage={dogsPerPage}

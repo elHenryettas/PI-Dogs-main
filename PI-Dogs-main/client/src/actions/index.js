@@ -10,13 +10,11 @@ export function getDogs() {
   };
 }
 export function getTemperament() {
- return async function (dispatch) {
-  const temperaments = await axios.get("http://localhost:3001/temperament")
-  return dispatch({
-    type: "GET_TEMPERAMENT",
-    payload: temperaments.data,
-  });
- }
- 
-  
+  return async function (dispatch) {
+    const temperaments = await axios.get("http://localhost:3001/temperament");
+    return dispatch({
+      type: "GET_TEMPERAMENT",
+      payload: temperaments.data,
+    });
+  };
 }
