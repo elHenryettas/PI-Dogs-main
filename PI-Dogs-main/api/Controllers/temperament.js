@@ -46,4 +46,5 @@ module.exports = router;
       array.push({ name: e });
     }
 
-    await Temperament.bulkCreate(array);*/
+    await Temperament.bulkCreate(array);
+    */
