@@ -18,3 +18,23 @@ export function getTemperament() {
     });
   };
 }
+export function filterDogsByWeight(payload) {
+  return {
+    type: "FILTER_BY_WEIGHT",
+    payload,
+  };
+}
+export function filterDogsByAOrZ(payload) {
+  return {
+    type: "FILTER_BY_AORZ",
+    payload,
+  };
+}
+
+export function filterDogsByBd(payload) {
+  console.log(payload);
+  return {
+    type: "FILTER_BY_BD",
+    payload,
+  };
+}

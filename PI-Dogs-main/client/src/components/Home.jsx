@@ -1,9 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getDogs } from "../actions";
+import {
+  getDogs,
+  filterDogsByWeight,
+  filterDogsByAOrZ,
+  filterDogsByBd,
+} from "../actions";
 import { Link } from "react-router-dom";
 import Card from "./Card";
 import Paginado from "./Paginado";
+import {
+  DESCENDENT,
+  ASCENDENT,
+  WEIGHTMAX,
+  WEIGHTMIN,
+  DBDOGS,
+  ALLDOGS,
+} from "../Auxiliar";
+import style from "./Home.module.css";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -13,6 +27,7 @@ export default function Home() {
   const indexOfLastDog = currentPage * dogsPerPage;
   const indexOfFirstDog = indexOfLastDog - dogsPerPage;
   const currenctDogs = allDogs.slice(indexOfFirstDog, indexOfLastDog);
+  const [order, setOrder] = useState("");
 
   const paginado = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -26,9 +41,27 @@ export default function Home() {
     e.preventDefault();
     dispatch(getDogs());
   }
+  function handleFilterDogsByAOrZ(e) {
+    dispatch(filterDogsByAOrZ(e.target.value));
+    setCurrentPage(1);
+    setOrder(e.target.value);
+  }
+
+  function handleFilterByWeight(e) {
+    e.preventDefault();
+    dispatch(filterDogsByWeight(e.target.value));
+    setCurrentPage(1);
+    setOrder(e.target.value);
+  }
+  function handleFilterByDb(e) {
+    e.preventDefault();
+    dispatch(filterDogsByBd(e.target.value));
+    setCurrentPage(1);
+    setOrder(e.target.value);
+  }
 
   return (
-    <div>
+    <div className={style.putofondo}>
       <Link to="/dogs"></Link>
       <h1>DOGGGS GANGGGGG</h1>
       <button
@@ -39,21 +72,25 @@ export default function Home() {
         Recargar todos los Perros
       </button>
       <div>
-        
-        <select>
-          <option value="ascendente">Raza Ascendente</option>
-          <option value="descendente">Raza Descendente</option>
+        <select onChange={(e) => handleFilterDogsByAOrZ(e)}>
+          <option></option>
+          <option value={ASCENDENT}>Raza Ascendente</option>
+          <option value={DESCENDENT}>Raza Descendente</option>
         </select>
-        <select>
-          <option value="weightMin">Peso Minimo</option>
-          <option value="weightMax">Peso Maximo</option>
+
+        <select onChange={(e) => handleFilterByWeight(e)}>
+          <option></option>
+          <option value={WEIGHTMIN}>Peso Minimo</option>
+          <option value={WEIGHTMAX}>Peso Maximo</option>
+        </select>
+
+        <select onChange={(e) => handleFilterByDb(e)}>
+          <option></option>
+          <option value={ALLDOGS}>Todos los perros</option>
+          <option value={DBDOGS}>Perros creados</option>
         </select>
         <select>
           <option value="temps">Temperamentos</option>
-        </select>
-        <select>
-          <option value="allDogs">Todos los perros</option>
-          <option value="dbDogs">Perros creados</option>
         </select>
         <Paginado
           dogsPerPage={dogsPerPage}
@@ -66,6 +103,7 @@ export default function Home() {
           <div key={e.id}>
             <Card
               id={e.id}
+              weightMin={e.weightMin}
               name={e.name}
               image={e.image}
               temperament={e.temperament}
@@ -73,6 +111,11 @@ export default function Home() {
           </div>
         );
       })}
+      <Paginado
+        dogsPerPage={dogsPerPage}
+        allDogs={allDogs.length}
+        paginado={paginado}
+      />
     </div>
   );
 }

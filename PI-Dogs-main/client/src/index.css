@@ -19,9 +19,5 @@ code {
   align-items: center;
   padding: 5px;
   list-style-type: none;
-  background-color: brown;
-}
-
-.paginado .numero {
-  margin: 0 10px 0 10px;
+  background-color: rgb(148, 108, 108);
 }
