@@ -4,7 +4,7 @@ import {
   WEIGHTMIN,
   ASCENDENT,
   DBDOGS,
-  ALLDOGS,
+  OFICIALDOGS,
 } from "../Auxiliar";
 
 const initialState = {
@@ -16,11 +16,11 @@ const initialState = {
 function rootReducer(state = initialState, action) {
   switch (action.type) {
     case "GET_DOGS":
-      console.log();
       return {
         ...state,
         dogs: action.payload,
         allDogs: action.payload,
+        temperaments: action.temperaments,
       };
     case "FILTER_BY_WEIGHT":
       let chocosFiltrados;
@@ -40,6 +40,7 @@ function rootReducer(state = initialState, action) {
         });
         chocosFiltrados = weightMinFilter;
       }
+      console.log(chocosFiltrados);
       return {
         ...state,
         dogs: chocosFiltrados,
@@ -52,7 +53,6 @@ function rootReducer(state = initialState, action) {
           if (b.name > a.name) return -1;
           return 0;
         });
-        console.log(order);
       }
       if (action.payload === DESCENDENT) {
         order = state.allDogs.sort((a, b) => {
@@ -60,8 +60,8 @@ function rootReducer(state = initialState, action) {
           if (b.name > a.name) return 1;
           return 0;
         });
-        console.log(order);
       }
+      console.log(order);
       return {
         ...state,
         dogs: order,
@@ -72,18 +72,22 @@ function rootReducer(state = initialState, action) {
         let aux = state.allDogs.filter((e) => e.id.length > 6);
         db = aux;
       }
-      if (action.payload === ALLDOGS) {
-        let aux = state.allDogs;
+      if (action.payload === OFICIALDOGS) {
+        let aux = state.allDogs.filter((e) => e.id.length < 4);
         db = aux;
       }
+      console.log(db);
       return {
         ...state,
         dogs: db,
       };
-    case "GET_TEMPERAMENTS":
+    case "FILTER_BY_TEMPERAMENTS":
+      const perrosFiltrados = state.allDogs.filter((e) => {
+        if (e.temperament && e.temperament.includes(action.payload)) return e;
+      });
       return {
         ...state,
-        temperaments: action.payload,
+        dogs: perrosFiltrados,
       };
     default:
       return state;

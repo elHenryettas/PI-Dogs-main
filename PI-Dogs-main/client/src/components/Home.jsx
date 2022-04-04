@@ -5,6 +5,7 @@ import {
   filterDogsByWeight,
   filterDogsByAOrZ,
   filterDogsByBd,
+  filterDogsByTemperament,
 } from "../actions";
 import { Link } from "react-router-dom";
 import Card from "./Card";
@@ -15,13 +16,14 @@ import {
   WEIGHTMAX,
   WEIGHTMIN,
   DBDOGS,
-  ALLDOGS,
+  OFICIALDOGS,
 } from "../Auxiliar";
 import style from "./Home.module.css";
 
 export default function Home() {
   const dispatch = useDispatch();
   const allDogs = useSelector((state) => state.dogs);
+  const allTemps = useSelector((state) => state.temperaments);
   const [currentPage, setCurrentPage] = useState(1);
   const [dogsPerPage, setDogsPerPage] = useState(8);
   const indexOfLastDog = currentPage * dogsPerPage;
@@ -40,6 +42,10 @@ export default function Home() {
   function handleClick(e) {
     e.preventDefault();
     dispatch(getDogs());
+  }
+  function handleGetAndFilterTemperaments(e) {
+    e.preventDefault();
+    dispatch(filterDogsByTemperament(e.target.value));
   }
   function handleFilterDogsByAOrZ(e) {
     dispatch(filterDogsByAOrZ(e.target.value));
@@ -61,7 +67,7 @@ export default function Home() {
   }
 
   return (
-    <div className={style.putofondo}>
+    <div className={style.home}>
       <Link to="/dogs"></Link>
       <h1>DOGGGS GANGGGGG</h1>
       <button
@@ -73,24 +79,26 @@ export default function Home() {
       </button>
       <div>
         <select onChange={(e) => handleFilterDogsByAOrZ(e)}>
-          <option></option>
           <option value={ASCENDENT}>Raza Ascendente</option>
           <option value={DESCENDENT}>Raza Descendente</option>
         </select>
 
         <select onChange={(e) => handleFilterByWeight(e)}>
-          <option></option>
           <option value={WEIGHTMIN}>Peso Minimo</option>
           <option value={WEIGHTMAX}>Peso Maximo</option>
         </select>
 
         <select onChange={(e) => handleFilterByDb(e)}>
-          <option></option>
-          <option value={ALLDOGS}>Todos los perros</option>
+          <option value={OFICIALDOGS}>Perros Oficiales</option>
           <option value={DBDOGS}>Perros creados</option>
         </select>
-        <select>
-          <option value="temps">Temperamentos</option>
+
+        <select onChange={(e) => handleGetAndFilterTemperaments(e)}>
+          {allTemps.map((element) => (
+            <option value={element.name} key={element.id}>
+              {element.name}
+            </option>
+          ))}
         </select>
         <Paginado
           dogsPerPage={dogsPerPage}
@@ -98,24 +106,21 @@ export default function Home() {
           paginado={paginado}
         />
       </div>
-      {currenctDogs?.map((e) => {
-        return (
-          <div key={e.id}>
-            <Card
-              id={e.id}
-              weightMin={e.weightMin}
-              name={e.name}
-              image={e.image}
-              temperament={e.temperament}
-            />
-          </div>
-        );
-      })}
-      <Paginado
-        dogsPerPage={dogsPerPage}
-        allDogs={allDogs.length}
-        paginado={paginado}
-      />
+      <div className={style.cardsConteiner}>
+        {currenctDogs?.map((e) => {
+          return (
+            <div key={e.id}>
+              <Card
+                id={e.id}
+                weightMin={e.weightMin}
+                name={e.name}
+                image={e.image}
+                temperament={e.temperament}
+              />
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
