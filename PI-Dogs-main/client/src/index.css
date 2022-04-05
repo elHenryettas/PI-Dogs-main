@@ -18,11 +18,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-.paginado {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 5px;
-  list-style-type: none;
-  background-color: rgb(148, 108, 108);
-}

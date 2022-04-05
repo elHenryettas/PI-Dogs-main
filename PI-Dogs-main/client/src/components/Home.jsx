@@ -18,6 +18,7 @@ import {
   DBDOGS,
   OFICIALDOGS,
 } from "../Auxiliar";
+import SeachBar from "./SeachBar";
 import style from "./Home.module.css";
 
 export default function Home() {
@@ -46,6 +47,8 @@ export default function Home() {
   function handleGetAndFilterTemperaments(e) {
     e.preventDefault();
     dispatch(filterDogsByTemperament(e.target.value));
+    setCurrentPage(1);
+    setOrder(e.target.value);
   }
   function handleFilterDogsByAOrZ(e) {
     dispatch(filterDogsByAOrZ(e.target.value));
@@ -77,6 +80,7 @@ export default function Home() {
       >
         Recargar todos los Perros
       </button>
+      <SeachBar />
       <div>
         <select onChange={(e) => handleFilterDogsByAOrZ(e)}>
           <option value={ASCENDENT}>Raza Ascendente</option>
@@ -94,7 +98,7 @@ export default function Home() {
         </select>
 
         <select onChange={(e) => handleGetAndFilterTemperaments(e)}>
-          {allTemps.map((element) => (
+          {allTemps?.map((element) => (
             <option value={element.name} key={element.id}>
               {element.name}
             </option>

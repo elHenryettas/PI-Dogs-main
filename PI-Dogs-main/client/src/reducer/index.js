@@ -11,6 +11,7 @@ const initialState = {
   dogs: [],
   allDogs: [],
   temperaments: [],
+  TempForDogCreate: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -22,6 +23,11 @@ function rootReducer(state = initialState, action) {
         allDogs: action.payload,
         temperaments: action.temperaments,
       };
+      case "GET_TEMPERAMENTS":
+        return {
+          ...state,
+          TempForDogCreate: action.payload
+        }
     case "FILTER_BY_WEIGHT":
       let chocosFiltrados;
       if (action.payload === WEIGHTMAX) {
@@ -40,7 +46,6 @@ function rootReducer(state = initialState, action) {
         });
         chocosFiltrados = weightMinFilter;
       }
-      console.log(chocosFiltrados);
       return {
         ...state,
         dogs: chocosFiltrados,
@@ -61,13 +66,14 @@ function rootReducer(state = initialState, action) {
           return 0;
         });
       }
-      console.log(order);
+
       return {
         ...state,
         dogs: order,
       };
     case "FILTER_BY_BD":
       let db;
+
       if (action.payload === DBDOGS) {
         let aux = state.allDogs.filter((e) => e.id.length > 6);
         db = aux;
@@ -76,7 +82,7 @@ function rootReducer(state = initialState, action) {
         let aux = state.allDogs.filter((e) => e.id.length < 4);
         db = aux;
       }
-      console.log(db);
+
       return {
         ...state,
         dogs: db,
@@ -89,6 +95,13 @@ function rootReducer(state = initialState, action) {
         ...state,
         dogs: perrosFiltrados,
       };
+    case "QUERRY_DOGS":
+      return {
+        ...state,
+        dogs: action.payload,
+      };
+      case "POST_DOG":
+        return {...state}
     default:
       return state;
   }
