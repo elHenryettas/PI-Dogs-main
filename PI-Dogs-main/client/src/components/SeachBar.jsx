@@ -1,8 +1,9 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
+
 import { useDispatch } from "react-redux";
 import { filterByName } from "../actions";
 import style from "./SearchBar.module.css";
+
 export default function SeachBar() {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
@@ -22,7 +23,7 @@ export default function SeachBar() {
       <input
         className={style.input}
         type="text"
-        value={ name }
+        value={name}
         placeholder="Buscar..."
         onChange={(e) => handleInput(e)}
       />

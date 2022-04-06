@@ -14,7 +14,7 @@ export default function Card({ name, image, temperament, id, weightMin }) {
         {/* <h3>{weightMin}</h3> */}
         <h4>Temperaments</h4>
         <p>{temperament}</p>
-        <Link to={`/dogs/${id}`}>
+        <Link to={`/home/${id}`}>
           <button>More Info</button>
         </Link>
       </div>

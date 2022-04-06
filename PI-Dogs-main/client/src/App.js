@@ -10,9 +10,9 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<LandingPage />} />
-          <Route path="/home" element={<Home />} />
+          <Route exact path="/home" element={<Home />} />
           <Route path="/dog" element={<DogCreate />} />
-          <Route path="/home/id" element={<Detail />} />
+          <Route exact path="/home/:id" element={<Detail />} />
         </Routes>
       </Router>
     </div>

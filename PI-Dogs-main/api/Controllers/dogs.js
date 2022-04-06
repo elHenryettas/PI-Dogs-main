@@ -30,18 +30,33 @@ const getInfoApi = async () => {
 
 const getInfoDb = async () => {
   return await Dog.findAll({
-    include: {
+     include: {
       model: Temperament /* nuevo modelo */,
       attributes: ["name"] /* solamente trae name */,
-      throught: { attributes: [] } /*y lo devuelve en forma de arreglo */,
-    },
+       throught: { attributes: [] }/*  y lo devuelve en forma de arreglo */,
+     },
   }); /* se trae toda la data (modulo) */
 };
 const getAllInfo = async () => {
   const infoApi = await getInfoApi(); /* Guarda la info de la api */
   const infoDb = await getInfoDb();
-  const allInfo = infoApi.concat(infoDb);
+  let aux = await infoDb.map((e) => {
+    return {
+      id: e.id,
+      name: e.name,
+      heightMin: e.heightMin,
+      heightMax: e.heightMax,
+      weightMin: e.weightMin,
+      weightMax: e.weightMax,
+      life_span: e.life_span,
+      image: e.image,
+      temperament: e.temperaments.map((e) => {
+          return e.name;
+        })
+        .join(", "),
+    };
+  });
+  const allInfo = infoApi.concat(aux);
   return allInfo;
 };
-
 module.exports = { getAllInfo };

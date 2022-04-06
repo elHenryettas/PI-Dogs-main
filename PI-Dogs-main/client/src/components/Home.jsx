@@ -121,6 +121,7 @@ export default function Home() {
                 image={e.image}
                 temperament={e.temperament}
               />
+      
             </div>
           );
         })}

@@ -3,10 +3,38 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getTemperaments, postDog } from "../actions";
 
+function validate(input) {
+  let errors = {};
+  if (!input.name) {
+    errors.name = "Name is required";
+  }
+  if (!input.heightMin) {
+    errors.heightMin = "Minimun height is required";
+  }
+
+  if (!input.heightMax) {
+    errors.heightMax = "Maximun height is required";
+  }
+
+  if (!input.weightMin) {
+    errors.weightMin = "Minimun weight is required";
+  }
+
+  if (!input.weightMax) {
+    errors.weightMax = "Maximun weight is required";
+  }
+
+  if (!input.life_span) {
+    errors.life_span = "Life span is required";
+  }
+  return errors;
+}
+
 export default function DogCreate() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const temperaments = useSelector((state) => state.TempForDogCreate);
+  const [errors, setErrors] = useState({});
   const [input, setInput] = useState({
     name: "",
     heightMax: "",
@@ -19,6 +47,7 @@ export default function DogCreate() {
   });
   function handleChange(e) {
     setInput({ ...input, [e.target.name]: e.target.value });
+    setErrors({ ...input, [e.target.name]: e.target.value });
   }
 
   function handleSelect(e) {
@@ -30,7 +59,6 @@ export default function DogCreate() {
 
   function handleSubmit(e) {
     e.preventDefault();
-
     dispatch(postDog(input));
     alert("Your dog has been uploaded succesfuly");
     setInput({
@@ -65,6 +93,7 @@ export default function DogCreate() {
             name="name"
             onChange={(e) => handleChange(e)}
           />
+          {errors.name && <p>{errors.name}</p>}
         </div>
 
         <div>
@@ -74,7 +103,8 @@ export default function DogCreate() {
             value={input.heightMax}
             name="heightMax"
             onChange={(e) => handleChange(e)}
-          />
+          />{" "}
+          {errors.heightMax && <p>{errors.heightMax}</p>}
         </div>
 
         <div>
@@ -85,6 +115,7 @@ export default function DogCreate() {
             name="heightMin"
             onChange={(e) => handleChange(e)}
           />
+          {errors.heightMin && <p>{errors.heightMin}</p>}
         </div>
 
         <div>
@@ -95,6 +126,7 @@ export default function DogCreate() {
             name="weightMax"
             onChange={(e) => handleChange(e)}
           />
+          {errors.weightMax && <p>{errors.weightMax}</p>}
         </div>
 
         <div>
@@ -105,6 +137,7 @@ export default function DogCreate() {
             name="weightMin"
             onChange={(e) => handleChange(e)}
           />
+          {errors.weightMin && <p>{errors.weightMin}</p>}
         </div>
 
         <div>
@@ -115,14 +148,14 @@ export default function DogCreate() {
             name="life_span"
             onChange={(e) => handleChange(e)}
           />
+          {errors.life_span && <p>{errors.life_span}</p>}
         </div>
 
         <div>
           <label>Imagen:</label>
           <input
             type="text"
-            value={
-              input.image}
+            value={input.image}
             name="image"
             onChange={(e) => handleChange(e)}
           />
