@@ -12,7 +12,7 @@ const initialState = {
   allDogs: [],
   temperaments: [],
   TempForDogCreate: [],
-  details: [],
+  details: {},
 };
 
 function rootReducer(state = initialState, action) {
@@ -105,6 +105,11 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         details: action.payload,
+      };
+    case "CLEAN_DETAIL":
+      return {
+        ...state,
+        details: {},
       };
     case "POST_DOG":
       return { ...state };

@@ -1,21 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getDetail } from "../actions";
+import { cleanDetail, getDetail } from "../actions";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 export default function Detail() {
   const dispatch = useDispatch();
   const { id } = useParams();
-  console.log(id);
+  /*  console.log(id); */
 
   useEffect(() => {
+    dispatch(cleanDetail());
     dispatch(getDetail(id));
   }, [dispatch, id]);
 
   const myDog = useSelector((state) => state.details);
   console.log(myDog);
+  /*  console.log(myDog); */
 
   if (myDog) {
     return (
@@ -33,7 +35,7 @@ export default function Detail() {
         </Link>
       </div>
     );
-  } else {
+  }else {
     return (
       <div>
         Cargando....

@@ -63,17 +63,23 @@ export function postDog(payload) {
   };
 }
 
-export const GET_DETAIL = 'GET_DETAIL'
-  export function getDetail (payload) {
-    return async function (dispatch){
-      try {
-        let info = await axios.get(`http://localhost:3001/dogs/${payload}`)
-        return dispatch({
-          type: 'GET_DETAIL',
-          payload: info.data
-        })
-      } catch(err){
-        console.log(err)
-      }
+export function getDetail(payload) {
+  return async function (dispatch) {
+    try {
+      let info = await axios.get(`http://localhost:3001/dogs/${payload}`);
+      return dispatch({
+        type: "GET_DETAIL",
+        payload: info.data,
+      });
+    } catch (err) {
+      console.log(err);
     }
-  }
+  };
+}
+
+export function cleanDetail() {
+  return {
+    type: "CLEAN_DETAIL",
+    payload: {},
+  };
+}
