@@ -7,6 +7,8 @@
   grid-column-gap: 5px;
   grid-row-gap: 5px;
   background-color: #478282;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 body {
   height: 100%;

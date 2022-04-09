@@ -21,6 +21,7 @@ import style from "./FiltAndCards.module.css";
 import Paginado from "./Paginado";
 import Card from "./Card";
 import Loader from "./Loader";
+import NoMachCase from "./NoMachCase";
 
 export default function () {
   const dispatch = useDispatch();
@@ -78,7 +79,7 @@ export default function () {
         </select>
 
         <select value="disabled" onChange={(e) => handleFilterByWeight(e)}>
-        <option value="">WEIGHT FILTER</option>
+          <option value="">WEIGHT FILTER</option>
           <option value={WEIGHTMIN}>Peso Minimo</option>
           <option value={WEIGHTMAX}>Peso Maximo</option>
         </select>
@@ -89,7 +90,10 @@ export default function () {
           <option value={DBDOGS}>Perros creados</option>
         </select>
 
-        <select value="disabled" onChange={(e) => handleGetAndFilterTemperaments(e)}>
+        <select
+          value="disabled"
+          onChange={(e) => handleGetAndFilterTemperaments(e)}
+        >
           <option value="">TEMPERAMENTS</option>
           {allTemps?.map((element) => (
             <option value={element.name} key={element.id}>
@@ -97,27 +101,34 @@ export default function () {
             </option>
           ))}
         </select>
-        <Paginado
-          dogsPerPage={dogsPerPage}
-          allDogs={allDogs.length}
-          paginado={paginado}
-        />
+        {allDogs.length > 8 ? (
+          <Paginado
+            dogsPerPage={dogsPerPage}
+            allDogs={allDogs.length}
+            paginado={paginado}
+          />
+        ) : null}
       </div>
       <div className={style.cardsConteiner}>
-        {isLoading ? ( <Loader /> ) :
-        currenctDogs?.map((e) => {
-          return (
-            <div key={e.id}>
-              <Card
-                id={e.id}
-                weightMin={e.weightMin}
-                name={e.name}
-                image={e.image}
-                temperament={e.temperament}
-              />
-            </div>
-          );
-        })}
+        {isLoading ? (
+          <Loader />
+        ) : currenctDogs.length === 0 ? (
+          <NoMachCase />
+        ) : (
+          currenctDogs?.map((e) => {
+            return (
+              <div key={e.id}>
+                <Card
+                  id={e.id}
+                  weightMin={e.weightMin}
+                  name={e.name}
+                  image={e.image}
+                  temperament={e.temperament}
+                />
+              </div>
+            );
+          })
+        )}
       </div>
     </div>
   );

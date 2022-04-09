@@ -40,12 +40,17 @@ export function filterDogsByBd(payload) {
 
 export function filterByName(name) {
   return async function (dispatch) {
-    let querry = await axios.get(`http://localhost:3001/dogs?name=${name}`);
+    try {
+      let querry = await axios.get(`http://localhost:3001/dogs?name=${name}`);
 
-    return dispatch({
-      type: "QUERRY_DOGS",
-      payload: querry.data,
-    });
+      return dispatch({
+        type: "QUERRY_DOGS",
+        payload: querry.data,
+      });
+    } catch (error) {
+      console.log(error);
+      alert("No hay nada aca capo!!");
+    }
   };
 }
 
@@ -82,4 +87,10 @@ export function cleanDetail() {
     type: "CLEAN_DETAIL",
     payload: {},
   };
+}
+export function cleanDog(){
+  return{
+    type: "CLEAN_DOGS",
+    payload: {}
+  }
 }

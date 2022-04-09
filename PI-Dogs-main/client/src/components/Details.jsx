@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { cleanDetail, getDetail } from "../actions";
+import { cleanDetail, getDetail, cleanDog } from "../actions";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Loader from "./Loader";
@@ -10,6 +10,11 @@ export default function Detail() {
   const dispatch = useDispatch();
   const { id } = useParams();
   /*  console.log(id); */
+
+  function handleClick(e) {
+    e.preventDefault();
+    dispatch(cleanDog());
+  }
 
   useEffect(() => {
     dispatch(cleanDetail());
@@ -20,7 +25,7 @@ export default function Detail() {
   console.log("CONSOLELOGGG", myDog);
 
   return (
-    <div>
+    <div onClick={(e) => handleClick(e)}>
       {myDog.id ? (
         <div>
           <h1>I am {myDog.name} </h1>
