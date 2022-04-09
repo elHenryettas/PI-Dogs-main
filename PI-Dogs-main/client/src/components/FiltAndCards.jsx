@@ -20,6 +20,7 @@ import {
 import style from "./FiltAndCards.module.css";
 import Paginado from "./Paginado";
 import Card from "./Card";
+import Loader from "./Loader";
 
 export default function () {
   const dispatch = useDispatch();
@@ -31,6 +32,8 @@ export default function () {
   const indexOfFirstDog = indexOfLastDog - dogsPerPage;
   const currenctDogs = allDogs.slice(indexOfFirstDog, indexOfLastDog);
   const [order, setOrder] = useState("");
+
+  const isLoading = useSelector((state) => state.isLoading);
 
   useEffect(() => {
     dispatch(getDogs());
@@ -68,22 +71,26 @@ export default function () {
   return (
     <div>
       <div>
-        <select onChange={(e) => handleFilterDogsByAOrZ(e)}>
-          <option value={ASCENDENT}>Raza Ascendente</option>
-          <option value={DESCENDENT}>Raza Descendente</option>
+        <select value="disabled" onChange={(e) => handleFilterDogsByAOrZ(e)}>
+          <option value="">ALPHABETICAL ORDER</option>
+          <option value={ASCENDENT}>A to Z</option>
+          <option value={DESCENDENT}>Z to A</option>
         </select>
 
-        <select onChange={(e) => handleFilterByWeight(e)}>
+        <select value="disabled" onChange={(e) => handleFilterByWeight(e)}>
+        <option value="">WEIGHT FILTER</option>
           <option value={WEIGHTMIN}>Peso Minimo</option>
           <option value={WEIGHTMAX}>Peso Maximo</option>
         </select>
 
-        <select onChange={(e) => handleFilterByDb(e)}>
+        <select value="disabled" onChange={(e) => handleFilterByDb(e)}>
+          <option value="">OFICIAL/CREATED</option>
           <option value={OFICIALDOGS}>Perros Oficiales</option>
           <option value={DBDOGS}>Perros creados</option>
         </select>
 
-        <select onChange={(e) => handleGetAndFilterTemperaments(e)}>
+        <select value="disabled" onChange={(e) => handleGetAndFilterTemperaments(e)}>
+          <option value="">TEMPERAMENTS</option>
           {allTemps?.map((element) => (
             <option value={element.name} key={element.id}>
               {element.name}
@@ -97,7 +104,8 @@ export default function () {
         />
       </div>
       <div className={style.cardsConteiner}>
-        {currenctDogs?.map((e) => {
+        {isLoading ? ( <Loader /> ) :
+        currenctDogs?.map((e) => {
           return (
             <div key={e.id}>
               <Card

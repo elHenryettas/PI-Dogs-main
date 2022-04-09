@@ -6,7 +6,7 @@ import style from "./Card.module.css";
 export default function Card({ name, image, temperament, id, weightMin }) {
   return (
     <div className={style.card} key={id}>
-      <div>
+      <div className={style.imgConteiner}>
         <img className={style.img} src={image} alt="A_dog" />
       </div>
       <div>
@@ -15,7 +15,7 @@ export default function Card({ name, image, temperament, id, weightMin }) {
         <h4>Temperaments</h4>
         <p>{temperament}</p>
         <Link to={`/home/${id}`}>
-          <button>More Info</button>
+          <button className={style.btn}>More Info</button>
         </Link>
       </div>
     </div>

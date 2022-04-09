@@ -10,10 +10,10 @@ export default function Paginado({ dogsPerPage, allDogs, paginado }) {
   return (
     /* renderiza los numeros */ <nav>
       <ul className={style.paginado}>
-        -
+        
         {pageNumbers?.map((number) => (
-          <li className="number" key={number}>
-            <a onClick={() => paginado(number)}>{number}-</a>
+          <li className={style.numbers} key={number}onClick={() => paginado(number)}>
+            <a >{number}</a>
           </li>
         ))}
       </ul>

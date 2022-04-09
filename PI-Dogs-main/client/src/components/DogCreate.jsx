@@ -6,7 +6,7 @@ import { getTemperaments, postDog } from "../actions";
 export default function DogCreate() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const temperaments = useSelector((state) => state.TempForDogCreate);
+  let temperaments = useSelector((state) => state.TempForDogCreate);
 
   const [input, setInput] = useState({
     name: "",
@@ -23,17 +23,56 @@ export default function DogCreate() {
   }
 
   function handleSelect(e) {
+    if (input.temperament.length < 5) {
+      setInput({
+        ...input,
+        temperament: [...input.temperament, e.target.value],
+      });
+      const newArray = input.temperament;
+      const find = newArray.indexOf(e.target.value);
+
+      if (find >= 0) {
+        newArray.splice(find, 1);
+      } else {
+        newArray.push(e.target.value);
+      }
+      setInput({
+        ...input,
+        temperament: newArray,
+      });
+    } else {
+      alert("The created dog can only have 5 temperaments at max");
+    }
+  }
+
+  function handleDeleteTemperament(e) {
+    e.preventDefault();
+    const newArray = input.temperament;
+    const find = newArray.indexOf(e.target.innerText);
+
+    if (find >= 0) {
+      newArray.splice(find, 1);
+    } else {
+      newArray.push(e.target.value);
+    }
     setInput({
       ...input,
-      temperament: [...input.temperament, `${e.target.value}`],
+      temperament: newArray,
     });
   }
 
   function handleSubmit(e) {
     e.preventDefault();
+    if (input.image === "") {
+      setInput({
+        ...input,
+        image:
+          "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.vTrS01KVxI7czupKn9G-dwHaGF%26pid%3DApi&f=1",
+      });
+    }
     dispatch(postDog(input));
     alert("Your dog has been uploaded succesfuly");
-    setInput({
+    /* setInput({
       name: "",
       heightMax: "",
       heightMin: "",
@@ -42,7 +81,7 @@ export default function DogCreate() {
       temperament: [],
       life_span: "",
       image: "",
-    });
+    }); */
     navigate("/home");
   }
 
@@ -124,10 +163,9 @@ export default function DogCreate() {
         </div>
 
         <div>
-          <label>Imagen:</label>
+          <label>Url Image:</label>
           <input
             type="text"
-            required
             value={input.image}
             name="image"
             onChange={(e) => handleChange(e)}
@@ -142,8 +180,21 @@ export default function DogCreate() {
           ))}
         </select>
         <ul>
-          <li>{input.temperament.map((ele) => ele + " ,")}</li>
+          <li>
+            {input.temperament.map((element) => {
+              return (
+                <button
+                  key={element}
+                  onClick={(e) => handleDeleteTemperament(e)}
+                >
+                  {" "}
+                  {element}
+                </button>
+              );
+            })}
+          </li>
         </ul>
+
         <button type="submit">Crear Perrazo!</button>
       </form>
     </div>

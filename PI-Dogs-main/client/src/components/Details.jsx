@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { cleanDetail, getDetail } from "../actions";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import Loader from "./Loader";
 
 export default function Detail() {
   const dispatch = useDispatch();
@@ -16,33 +17,27 @@ export default function Detail() {
   }, [dispatch, id]);
 
   const myDog = useSelector((state) => state.details);
-  console.log(myDog);
-  /*  console.log(myDog); */
+  console.log("CONSOLELOGGG", myDog);
 
-  if (myDog) {
-    return (
-      <div>
-        <h1>I am {myDog.name} </h1>
-        <h3>Peso Max: {myDog.weightMax} </h3>
-        <h3>Peso Min: {myDog.weightMin} </h3>
-        <h3>Altura Max: {myDog.heightMax} </h3>
-        <h3>Altura Min: {myDog.heightMin} </h3>
-        <h2>Temperamentos: {myDog.temperament}</h2>
-        <h3>Tiempo de vida: {myDog.life_span} </h3>
-        <img src={myDog.image} />
-        <Link to="/home">
-          <button>Volver</button>
-        </Link>
-      </div>
-    );
-  }else {
-    return (
-      <div>
-        Cargando....
-        <Link to="/home">
-          <button>Volver</button>
-        </Link>
-      </div>
-    );
-  }
+  return (
+    <div>
+      {myDog.id ? (
+        <div>
+          <h1>I am {myDog.name} </h1>
+          <h3>Peso Max: {myDog.weightMax} </h3>
+          <h3>Peso Min: {myDog.weightMin} </h3>
+          <h3>Altura Max: {myDog.heightMax} </h3>
+          <h3>Altura Min: {myDog.heightMin} </h3>
+          <h2>Temperamentos: {myDog.temperament}</h2>
+          <h3>Tiempo de vida: {myDog.life_span} </h3>
+          <img src={myDog.image} />
+          <Link to="/home">
+            <button>Volver</button>
+          </Link>
+        </div>
+      ) : (
+        <Loader />
+      )}
+    </div>
+  );
 }

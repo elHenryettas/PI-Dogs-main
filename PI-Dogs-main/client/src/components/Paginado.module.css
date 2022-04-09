@@ -1,9 +1,30 @@
+
 .paginado {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 5px;
+    padding: 20px;
     list-style-type: none;
-    background-color: rgb(148, 108, 108);
+    background-color: #946c6c;
+    font-weight: 600;
   }
   
+  .numbers{
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    padding-inline-end: 0.4%;
+    padding-left: 0.3em;
+    margin: 10px;
+   
+    border: solid black 1px;
+    text-align: center;
+    border-radius: 6px;
+    background-color: tomato;
+  }
+
+  .numbers:hover{
+    background-color: #478282;
+    color: rgb(255, 255, 255);
+    text-shadow: black 4px;
+  }

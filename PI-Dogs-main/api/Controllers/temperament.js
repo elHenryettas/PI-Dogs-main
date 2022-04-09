@@ -9,7 +9,8 @@ router.get("/", async (req, res) => {
       ...new Set(
         allDogs
           .map((e) => e.temperament)
-          /* todos los t. en un array cuyos elementos son str */
+
+          /* todos los t. en un array cuyos  son str */
           .join()
           .split(",")
 
@@ -21,14 +22,14 @@ router.get("/", async (req, res) => {
     /* ordena alfabeticamente y elimina strings vacios(solo hay uno pero bueno) */
 
     const clearTemp = temperament.map((e) => e.trim());
-    let descarte = clearTemp.pop();
+
     for (let i = 0; i < clearTemp.length; i++) {
       const e = clearTemp[i];
       await Temperament.findOrCreate({
         where: { name: e },
       });
     }
-
+    console.log(temperament);
     const AllTemperament = await Temperament.findAll();
     res.send(AllTemperament);
   } catch (error) {

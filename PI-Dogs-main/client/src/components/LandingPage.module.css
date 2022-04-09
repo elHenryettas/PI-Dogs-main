@@ -1,0 +1,76 @@
+/* 
+body {
+  background: url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages7.alphacoders.com%2F592%2F592577.jpg&f=1&nofb=1);
+  width: 1000vw;
+  height: 1000vh;  
+  background-position: center;  
+  background-repeat: no-repeat;  
+  background-size: cover;
+} */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lobster&family=Pacifico&family=Roboto:wght@300&display=swap");
+/*font-family: 'Roboto', sans-serif;font-family: "Pacifico", cursive;*/
+
+body {
+  box-sizing: border-box;
+ 
+  font-family: "Lobster";
+}
+
+.bigContainer {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../Multimedia/img/lampage.jpg");
+  background-size: cover;
+}
+
+.container {
+  backdrop-filter: blur(5px);
+  background-color: transparent;
+  border-radius: 25px;
+  border: #000000 solid 3px;
+  background-color: #ffffff94;
+  box-shadow: 15px 2px 104px 12px #691c52ac;
+  padding: 5vh;
+  height: 60vh;
+  width: 40vw;
+}
+
+.title {
+  font-size: 2em;
+  font-weight: bold;
+  color: rgb(1, 43, 43);
+  padding-top: 0.2em;
+  padding-bottom: 0.5em;
+}
+
+.text {
+  font-size: 1.34em;
+  color: rgb(3, 31, 31);
+}
+
+.btn {
+  font-family: "Lobster", cursive;
+  width: 38%;
+  padding: 2%;
+  border: 1px solid;
+  border-radius: 1px;
+  margin-top: 1em;
+  margin-bottom: 2.5em;
+  font-size: 1.2em;
+  border-radius: 15px;
+  cursor: pointer;
+  background-color: #491c1c;
+}
+.btn:hover {
+  background-color: rgb(80, 116, 39);
+  border-radius: 2px;
+  border: 1.2px solid;
+  color: white;
+  border-radius: 15px;
+  overflow-x: hidden;
+}
+

@@ -13,6 +13,7 @@ const initialState = {
   temperaments: [],
   TempForDogCreate: [],
   details: {},
+  isLoading: true,
 };
 
 function rootReducer(state = initialState, action) {
@@ -23,6 +24,7 @@ function rootReducer(state = initialState, action) {
         dogs: action.payload,
         allDogs: action.payload,
         temperaments: action.temperaments,
+        isLoading: false,
       };
     case "GET_TEMPERAMENTS":
       return {
