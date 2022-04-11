@@ -29,15 +29,15 @@ export default function Detail() {
       {myDog.id ? (
         <div>
           <h1>I am {myDog.name} </h1>
-          <h3>Peso Max: {myDog.weightMax} </h3>
-          <h3>Peso Min: {myDog.weightMin} </h3>
+          <h3>Peso Max: {myDog.weightMax}</h3>
+          <h3>Peso Min: {myDog.weightMin}  </h3>
           <h3>Altura Max: {myDog.heightMax} </h3>
           <h3>Altura Min: {myDog.heightMin} </h3>
           <h2>Temperamentos: {myDog.temperament}</h2>
           <h3>Tiempo de vida: {myDog.life_span} </h3>
           <img src={myDog.image} />
           <Link to="/home">
-            <button>Volver</button>
+            <button>Volver al home</button>
           </Link>
         </div>
       ) : (

@@ -2,6 +2,7 @@ const router = require("express").Router();
 const routerDog = require("./routerDog");
 const routerTemperament = require("./routerTemperaments");
 const routerCreate = require("./routerCreate");
+
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 

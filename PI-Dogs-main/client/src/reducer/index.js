@@ -113,13 +113,14 @@ function rootReducer(state = initialState, action) {
         ...state,
         details: {},
       };
-      case "CLEAN_DOGS":
-        return{
-          ...state, 
-          isLoading: true
-        }
+    case "CLEAN_DOGS":
+      return {
+        ...state,
+        isLoading: true,
+      };
     case "POST_DOG":
       return { ...state };
+
     default:
       return state;
   }

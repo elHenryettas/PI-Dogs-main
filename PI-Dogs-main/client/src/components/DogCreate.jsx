@@ -40,6 +40,7 @@ export default function DogCreate() {
         ...input,
         temperament: newArray,
       });
+      e.target.value = "Temperaments";
     } else {
       alert("The created dog can only have 5 temperaments at max");
     }
@@ -63,13 +64,8 @@ export default function DogCreate() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (input.image === "") {
-      setInput({
-        ...input,
-        image:
-          "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.vTrS01KVxI7czupKn9G-dwHaGF%26pid%3DApi&f=1",
-      });
-    }
+    if (input.temperament.length === 0)
+      return alert("dale alguna personalidad a tu perrazo, no seas malo");
     dispatch(postDog(input));
     alert("Your dog has been uploaded succesfuly");
     /* setInput({
@@ -103,6 +99,7 @@ export default function DogCreate() {
             required
             value={input.name}
             name="name"
+         
             onChange={(e) => handleChange(e)}
           />
         </div>
@@ -115,7 +112,7 @@ export default function DogCreate() {
             value={input.heightMax}
             name="heightMax"
             onChange={(e) => handleChange(e)}
-          />{" "}
+          />
         </div>
 
         <div>
@@ -126,7 +123,7 @@ export default function DogCreate() {
             value={input.heightMin}
             name="heightMin"
             onChange={(e) => handleChange(e)}
-          />
+          />{" "}
         </div>
 
         <div>
@@ -148,7 +145,7 @@ export default function DogCreate() {
             value={input.weightMin}
             name="weightMin"
             onChange={(e) => handleChange(e)}
-          />
+          />{" "}
         </div>
 
         <div>
@@ -159,7 +156,7 @@ export default function DogCreate() {
             value={input.life_span}
             name="life_span"
             onChange={(e) => handleChange(e)}
-          />
+          />{" "}
         </div>
 
         <div>
@@ -172,7 +169,8 @@ export default function DogCreate() {
           />
         </div>
 
-        <select onChange={(e) => handleSelect(e)}>
+        <select value="disabled" onChange={(e) => handleSelect(e)}>
+          <option value="">Temperaments</option>
           {temperaments.map((element) => (
             <option required value={element.name} key={element.id}>
               {element.name}
@@ -187,7 +185,6 @@ export default function DogCreate() {
                   key={element}
                   onClick={(e) => handleDeleteTemperament(e)}
                 >
-                  {" "}
                   {element}
                 </button>
               );

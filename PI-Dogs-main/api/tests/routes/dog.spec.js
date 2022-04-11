@@ -18,7 +18,8 @@ describe('Videogame routes', () => {
     .then(() => Dog.create(dog)));
   describe('GET /dogs', () => {
     it('should get 200', () =>
-      agent.get('/dogs').expect(200)
+      agent.get('/dogs').expect(200),
+      console.log("HOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOLA",agent.get('/dogs'))
     );
   });
 });

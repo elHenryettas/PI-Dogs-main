@@ -14,7 +14,7 @@ router.get("/", async (req, res) => {
         ? res.status(404).json("Perro no encontrado, sory beibe")
         : res.status(200).json(raza);
     } else {
-      res.status(200).json(allDogs);
+      res.send(200, allDogs);
     }
   } catch (error) {
     console.log(error);

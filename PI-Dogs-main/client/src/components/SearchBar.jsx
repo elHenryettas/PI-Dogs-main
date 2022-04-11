@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { filterByName } from "../actions";
 import style from "./SearchBar.module.css";
 
-export default function SeachBar() {
+export default function SearchBar() {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
 

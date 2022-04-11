@@ -22,6 +22,7 @@ const getInfoApi = async () => {
       weightMin: weightMin ? weightMin : 28,
       temperament: defaultTemp,
       life_span: e.life_span,
+
       image: e.image.url,
     };
   });
@@ -30,11 +31,11 @@ const getInfoApi = async () => {
 
 const getInfoDb = async () => {
   return await Dog.findAll({
-     include: {
+    include: {
       model: Temperament /* nuevo modelo */,
       attributes: ["name"] /* solamente trae name */,
-       throught: { attributes: [] }/*  y lo devuelve en forma de arreglo */,
-     },
+      throught: { attributes: [] } /*  y lo devuelve en forma de arreglo */,
+    },
   }); /* se trae toda la data (modulo) */
 };
 const getAllInfo = async () => {
@@ -50,7 +51,9 @@ const getAllInfo = async () => {
       weightMax: e.weightMax,
       life_span: e.life_span,
       image: e.image,
-      temperament: e.temperaments.map((e) => {
+
+      temperament: e.temperaments
+        .map((e) => {
           return e.name;
         })
         .join(", "),

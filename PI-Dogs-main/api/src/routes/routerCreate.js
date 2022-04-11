@@ -9,6 +9,7 @@ router.post("/", async (req, res, next) => {
     weightMin,
     temperament,
     life_span,
+    
     image,
   } = req.body;
 
@@ -20,6 +21,7 @@ router.post("/", async (req, res, next) => {
       weightMax,
       weightMin,
       life_span,
+     
       image,
     });
 

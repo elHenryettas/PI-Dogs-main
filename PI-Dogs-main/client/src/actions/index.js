@@ -88,9 +88,9 @@ export function cleanDetail() {
     payload: {},
   };
 }
-export function cleanDog(){
-  return{
+export function cleanDog() {
+  return {
     type: "CLEAN_DOGS",
-    payload: {}
-  }
+    payload: {},
+  };
 }

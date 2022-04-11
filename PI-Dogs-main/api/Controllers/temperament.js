@@ -29,7 +29,7 @@ router.get("/", async (req, res) => {
         where: { name: e },
       });
     }
-    console.log(temperament);
+  
     const AllTemperament = await Temperament.findAll();
     res.send(AllTemperament);
   } catch (error) {
