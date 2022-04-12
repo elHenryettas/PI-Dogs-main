@@ -99,7 +99,7 @@ export default function DogCreate() {
             required
             value={input.name}
             name="name"
-         
+            pattern="[A-Za-z]+"
             onChange={(e) => handleChange(e)}
           />
         </div>
@@ -109,8 +109,10 @@ export default function DogCreate() {
           <input
             type="text"
             required
+            maxLength={3}
             value={input.heightMax}
             name="heightMax"
+            pattern="[0-9]+"
             onChange={(e) => handleChange(e)}
           />
         </div>
@@ -122,6 +124,7 @@ export default function DogCreate() {
             required
             value={input.heightMin}
             name="heightMin"
+            pattern="[0-9]+"
             onChange={(e) => handleChange(e)}
           />{" "}
         </div>
@@ -133,6 +136,7 @@ export default function DogCreate() {
             required
             value={input.weightMax}
             name="weightMax"
+            pattern="[0-9]+"
             onChange={(e) => handleChange(e)}
           />
         </div>
@@ -144,6 +148,7 @@ export default function DogCreate() {
             required
             value={input.weightMin}
             name="weightMin"
+            pattern="[0-9]+"
             onChange={(e) => handleChange(e)}
           />{" "}
         </div>
@@ -155,6 +160,7 @@ export default function DogCreate() {
             required
             value={input.life_span}
             name="life_span"
+            pattern="[0-9]+"
             onChange={(e) => handleChange(e)}
           />{" "}
         </div>
@@ -165,6 +171,7 @@ export default function DogCreate() {
             type="text"
             value={input.image}
             name="image"
+            pattern="https?://.+"
             onChange={(e) => handleChange(e)}
           />
         </div>

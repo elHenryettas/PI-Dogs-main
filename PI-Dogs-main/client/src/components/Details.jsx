@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { cleanDetail, getDetail, cleanDog } from "../actions";
 import { useEffect } from "react";
@@ -8,16 +8,18 @@ import Loader from "./Loader";
 
 export default function Detail() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { id } = useParams();
   /*  console.log(id); */
 
   function handleClick(e) {
     e.preventDefault();
+    dispatch(cleanDetail());
     dispatch(cleanDog());
+    navigate("/home");
   }
 
   useEffect(() => {
-    dispatch(cleanDetail());
     dispatch(getDetail(id));
   }, [dispatch, id]);
 
@@ -25,20 +27,18 @@ export default function Detail() {
   console.log("CONSOLELOGGG", myDog);
 
   return (
-    <div onClick={(e) => handleClick(e)}>
+    <div>
       {myDog.id ? (
         <div>
           <h1>I am {myDog.name} </h1>
           <h3>Peso Max: {myDog.weightMax}</h3>
-          <h3>Peso Min: {myDog.weightMin}  </h3>
+          <h3>Peso Min: {myDog.weightMin} </h3>
           <h3>Altura Max: {myDog.heightMax} </h3>
           <h3>Altura Min: {myDog.heightMin} </h3>
           <h2>Temperamentos: {myDog.temperament}</h2>
           <h3>Tiempo de vida: {myDog.life_span} </h3>
           <img src={myDog.image} />
-          <Link to="/home">
-            <button>Volver al home</button>
-          </Link>
+          <button onClick={(e) => handleClick(e)}>Volver al home</button>
         </div>
       ) : (
         <Loader />

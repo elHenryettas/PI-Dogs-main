@@ -21,10 +21,12 @@ export default function Navbar() {
           handleClick(e);
         }}
       >
-        Recargar todos los Perros
+        Recharge
       </button>
-      <button >
-        <Link className={style.addDog} to="/dog">Add your Dreamd dog</Link>
+      <button>
+        <Link className={style.addDog} to="/dog">
+          Add your Dreamed dog
+        </Link>
       </button>
     </div>
   );
