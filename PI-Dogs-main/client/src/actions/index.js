@@ -11,6 +11,15 @@ export function getDogs() {
     });
   };
 }
+export function deleteDogs(id) {
+  return async function (dispatch) {
+    let info = await axios.delete("http://localhost:3001/delete/" + id);
+    return dispatch({
+      type: "DELETE",
+      payload: info,
+    });
+  };
+}
 
 export function filterDogsByTemperament(payload) {
   return {

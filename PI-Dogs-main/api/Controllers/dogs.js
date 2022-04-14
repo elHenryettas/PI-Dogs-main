@@ -22,7 +22,6 @@ const getInfoApi = async () => {
       weightMin: weightMin ? weightMin : 28,
       temperament: defaultTemp,
       life_span: e.life_span,
-
       image: e.image.url,
     };
   });

@@ -1,12 +1,13 @@
 /* eslint-disable import/no-extraneous-dependencies */
-const { expect } = require('chai');
-const session = require('supertest-session');
-const app = require('../../src/app.js');
-const { Dog, conn } = require('../../src/db.js');
+const { expect } = require("chai");
+const session = require("supertest-session");
+const app = require("../../src/app.js");
+const { Dog, conn } = require("../../src/db.js");
+const ruta = require("../../src/routes/index");
 
 const agent = session(app);
 const dog = {
-  name: 'Pug',
+  name: "Pug",
 };
 
 describe('Videogame routes', () => {
@@ -19,7 +20,6 @@ describe('Videogame routes', () => {
   describe('GET /dogs', () => {
     it('should get 200', () =>
       agent.get('/dogs').expect(200),
-      console.log("HOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOLA",agent.get('/dogs'))
     );
   });
 });

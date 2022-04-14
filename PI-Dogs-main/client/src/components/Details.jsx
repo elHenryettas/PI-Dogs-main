@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { cleanDetail, getDetail, cleanDog } from "../actions";
+import { cleanDetail, getDetail, cleanDog, deleteDogs } from "../actions";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Loader from "./Loader";
@@ -19,17 +19,26 @@ export default function Detail() {
     navigate("/home");
   }
 
+  function handleDetele(e) {
+    e.preventDefault();
+    dispatch(deleteDogs(id));
+    alert("El perro ha sido borrado");
+    navigate("/home");
+  }
+
   useEffect(() => {
     dispatch(getDetail(id));
   }, [dispatch, id]);
 
   const myDog = useSelector((state) => state.details);
-  console.log("CONSOLELOGGG", myDog);
 
   return (
     <div>
       {myDog.id ? (
         <div>
+          {myDog.id.length > 5 ? (
+            <button onClick={(e) => handleDetele(e)}> BORRAR PERRACO</button>
+          ) : null}
           <h1>I am {myDog.name} </h1>
           <h3>Peso Max: {myDog.weightMax}</h3>
           <h3>Peso Min: {myDog.weightMin} </h3>

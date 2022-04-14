@@ -40,7 +40,6 @@ export default function DogCreate() {
         ...input,
         temperament: newArray,
       });
-      e.target.value = "Temperaments";
     } else {
       alert("The created dog can only have 5 temperaments at max");
     }

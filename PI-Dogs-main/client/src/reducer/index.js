@@ -121,6 +121,8 @@ function rootReducer(state = initialState, action) {
     case "POST_DOG":
       return { ...state };
 
+    case "DELETE":
+      return { ...state };
     default:
       return state;
   }

@@ -55,7 +55,7 @@ export default function () {
   function handleFilterByWeight(e) {
     e.preventDefault();
     dispatch(filterDogsByWeight(e.target.value));
-    setCurrentPage(1);
+    setCurrentPage(1); 
     setOrder(e.target.value);
   }
   function handleFilterByDb(e) {
