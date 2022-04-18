@@ -40,6 +40,7 @@ const getInfoDb = async () => {
 const getAllInfo = async () => {
   const infoApi = await getInfoApi(); /* Guarda la info de la api */
   const infoDb = await getInfoDb();
+
   let aux = await infoDb.map((e) => {
     return {
       id: e.id,
@@ -50,7 +51,7 @@ const getAllInfo = async () => {
       weightMax: e.weightMax,
       life_span: e.life_span,
       image: e.image,
-
+       
       temperament: e.temperaments
         .map((e) => {
           return e.name;

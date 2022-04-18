@@ -9,6 +9,7 @@ import {
   DBDOGS,
   OFICIALDOGS,
 } from "../Auxiliar";
+
 import {
   getDogs,
   filterDogsByWeight,

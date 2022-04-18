@@ -95,10 +95,8 @@ export default function DogCreate() {
           <label>Nombre:</label>
           <input
             type="text"
-            required
             value={input.name}
             name="name"
-            pattern="[A-Za-z]+"
             onChange={(e) => handleChange(e)}
           />
         </div>
@@ -107,11 +105,8 @@ export default function DogCreate() {
           <label>Altura Maximo:</label>
           <input
             type="text"
-            required
-            maxLength={3}
             value={input.heightMax}
             name="heightMax"
-            pattern="[0-9]+"
             onChange={(e) => handleChange(e)}
           />
         </div>
@@ -120,10 +115,8 @@ export default function DogCreate() {
           <label>Altura Minimo:</label>
           <input
             type="text"
-            required
             value={input.heightMin}
             name="heightMin"
-            pattern="[0-9]+"
             onChange={(e) => handleChange(e)}
           />{" "}
         </div>
@@ -132,10 +125,8 @@ export default function DogCreate() {
           <label>Peso Maximo:</label>
           <input
             type="text"
-            required
             value={input.weightMax}
             name="weightMax"
-            pattern="[0-9]+"
             onChange={(e) => handleChange(e)}
           />
         </div>
@@ -144,22 +135,18 @@ export default function DogCreate() {
           <label>Peso Minimo:</label>
           <input
             type="text"
-            required
             value={input.weightMin}
             name="weightMin"
-            pattern="[0-9]+"
             onChange={(e) => handleChange(e)}
-          />{" "}
+          />
         </div>
 
         <div>
           <label>Tiempo de vida:</label>
           <input
             type="text"
-            required
             value={input.life_span}
             name="life_span"
-            pattern="[0-9]+"
             onChange={(e) => handleChange(e)}
           />{" "}
         </div>
@@ -170,7 +157,6 @@ export default function DogCreate() {
             type="text"
             value={input.image}
             name="image"
-            pattern="https?://.+"
             onChange={(e) => handleChange(e)}
           />
         </div>
