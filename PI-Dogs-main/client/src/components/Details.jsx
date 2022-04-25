@@ -5,6 +5,7 @@ import { cleanDetail, getDetail, cleanDog, deleteDogs } from "../actions";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Loader from "./Loader";
+import "./Details.scss";
 
 export default function Detail() {
   const dispatch = useDispatch();
@@ -33,21 +34,40 @@ export default function Detail() {
   const myDog = useSelector((state) => state.details);
 
   return (
-    <div>
+    <div id="detailsSection">
       {myDog.id ? (
-        <div>
-          {myDog.id.length > 5 ? (
-            <button onClick={(e) => handleDetele(e)}> BORRAR PERRACO</button>
-          ) : null}
-          <h1>I am {myDog.name} </h1>
-          <h3>Peso Max: {myDog.weightMax}</h3>
-          <h3>Peso Min: {myDog.weightMin} </h3>
-          <h3>Altura Max: {myDog.heightMax} </h3>
-          <h3>Altura Min: {myDog.heightMin} </h3>
-          <h2>Temperamentos: {myDog.temperament}</h2>
-          <h3>Tiempo de vida: {myDog.life_span} </h3>
-          <img src={myDog.image} />
-          <button onClick={(e) => handleClick(e)}>Volver al home</button>
+        <div className="conteinerDetail">
+          <section>
+            <img src={myDog.image} alt={myDog.name} />
+          </section>
+          <section id="dataDetails">
+            {myDog.id.length > 5 ? (
+              <button onClick={(e) => handleDetele(e)}> BORRAR PERRACO</button>
+              ) : null}
+            <h2 id="nameDetailsRace">I am {myDog.name} </h2>
+            <hr />
+            <div id="heightDetail">
+              <h5>Height</h5>
+              <span>
+                {myDog.heightMax} - {myDog.heightMin}
+              </span>
+            </div>
+            <div id="weightDetai">
+              <h5>Weight</h5>
+              <span>
+                {myDog.weightMax} - {myDog.weightMin}
+              </span>
+            </div>
+            <div id="lifeDetails">
+              <h5>life span</h5>
+              <span>{myDog.life_span}</span>
+            </div>
+            <div id="Temperamentsdetails">
+              <h5>Temperaments</h5>
+              <span>{myDog.temperament}</span>
+            </div>
+          </section>
+              <button className="btn_back" onClick={(e) => handleClick(e)}>Back Home</button>
         </div>
       ) : (
         <Loader />

@@ -1,0 +1,141 @@
+#detailsSection{
+    height: 100vh;
+    width: 100vw;
+    display:inline-flex;
+    justify-content: center;
+    align-items:center;
+}
+.conteinerDetail{
+    background-color: rgba(80, 48, 26,0.5);
+    backdrop-filter: blur(15px);
+    display:inline-flex;
+    width: 100%;
+    padding: 1em 0;
+    height:100vh;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    &>section>{
+        img{
+            min-width: auto;
+            height: 500px;
+        }
+        h2{
+            font-size: 40px;
+            font-weight: 200;
+        }
+        h5{
+            font-size: 18px;
+            margin: 10px auto;
+        }
+        span{
+            font-size: 20px;
+        }
+    }
+
+}
+@media screen and(min-width: 600px)and(max-width: 1200px){
+    .conteinerDetail{
+        flex-direction: column;
+        justify-content: center;
+        & >section>{
+            img{
+                width: auto;
+                height: 300px;
+            }
+        }
+        #dataDetails{
+            display: grid;
+            width: 60%;
+            height:fit-content;
+            #nameDetailsRace{
+                grid-area:Name;
+            }
+            #heightDetail{
+                grid-area:Height;
+            }
+            #weightDetail{
+                grid-area:Weight
+            }
+            #lifeDetails{
+                grid-area:Life;
+            }
+            #Temperamentsdetails{
+                grid-area:Temperaments
+            }
+            #originDetail{
+                grid-area:Origin
+            }
+            grid-template-columns:1fr 1fr 1fr;
+            grid-template-rows: auto;
+            grid-gap: 5px;
+            align-items:center;
+            grid-template-areas:
+               "Name Name Name"
+               "Height Weight Life"
+               "Temperaments Temperaments Origin" 
+               ;
+        }
+    }
+}
+img{
+    max-width:650px;
+}
+@media screen and(min-width: 320px)and(max-width: 600px){
+    .conteinerDetail{
+        flex-direction: column;
+        justify-content: center;
+        & >section>{
+            img{
+                width: 200px;
+                
+                height: 200px;
+            }
+        }
+        #dataDetails{
+            display: grid;
+            width: 60%;
+            height: auto;
+            #nameDetailsRace{
+                grid-area:Name;
+            }
+            #heightDetail{
+                grid-area:Height;
+            }
+            #weightDetail{
+                grid-area:Weight
+            }
+            #lifeDetails{
+                grid-area:Life;
+            }
+            #Temperamentsdetails{
+                grid-area:Temperaments
+            }
+            #originDetail{
+                grid-area:Origin
+            }
+            grid-template-columns:1fr 1fr 1fr;
+            grid-template-rows: auto;
+            grid-gap: 5px;
+            align-items:center;
+            grid-template-areas:
+               "Name Name Name"
+               "Height Weight Life"
+               "Temperaments Temperaments Origin" 
+               ;
+        }
+    }
+
+}
+.btn_back{
+    width: 5em;
+        border-radius: 4px;
+        padding: 0.5em;
+        margin-top: 1em;
+        background-color:#EC3A1B;
+        color: rgb(0, 0, 0);
+        border: none;
+        &:hover{
+            opacity: 0.8;
+        }
+}

@@ -29,7 +29,7 @@ export default function () {
   const allDogs = useSelector((state) => state.dogs);
   const allTemps = useSelector((state) => state.temperaments);
   const [currentPage, setCurrentPage] = useState(1);
-  const [dogsPerPage, setDogsPerPage] = useState(8);
+  const [dogsPerPage, setDogsPerPage] = useState(14);
   const indexOfLastDog = currentPage * dogsPerPage;
   const indexOfFirstDog = indexOfLastDog - dogsPerPage;
   const currenctDogs = allDogs.slice(indexOfFirstDog, indexOfLastDog);

@@ -1,0 +1,32 @@
+.warning{
+    color:#F74343;
+    font-weight: 600;
+    font-size: 18px;
+    border-radius:5px;
+    position:absolute;
+    right: 0;
+}
+.warning::before{
+    content:"!";
+}
+.succes{
+    color:#5EB848;
+    border-radius:3px;
+    font-weight: 800;
+    font-size: 18px;
+    position:absolute;
+    right: 0;
+}
+.succes::before{
+    content:"!";
+}
+
+@media screen and(min-width: 320px) and(max-width: 500px){
+    .warning{
+    font-weight: 400;
+    font-size: 14px;}
+    .succes{
+    font-weight: 400;
+    font-size: 14px;
+    }
+}
