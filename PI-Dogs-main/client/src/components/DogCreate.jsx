@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getTemperaments, postDog } from "../actions";
-import Alerts from "./FormAlerts"
+import Alerts from "./FormAlerts";
 import "./DogCreate.scss";
 
 export default function DogCreate() {
@@ -25,7 +25,6 @@ export default function DogCreate() {
 
   function handleChange(e) {
     setInput({ ...input, [e.target.name]: e.target.value });
-  
   }
 
   function handleSelect(e) {
@@ -69,8 +68,8 @@ export default function DogCreate() {
 
   function handleSubmit(e) {
     e.preventDefault();
- if(input.temperament.length === 0)
- alert("The dog must have one temperament");
+    if (input.temperament.length === 0)
+      alert("The dog must have one temperament");
     alert("Your dog has been uploaded succesfuly");
     dispatch(postDog(input));
     /* setInput({
@@ -94,27 +93,43 @@ export default function DogCreate() {
     <div id="createContent" className="home">
       <fieldset className="fieldset">
         <legend>Create a New Breed</legend>
-        <form onSubmit={(e) => handleSubmit(e)}  autoComplete="off">
+        <form onSubmit={(e) => handleSubmit(e)} autoComplete="off">
           <div className="labels">
             <label>Nombre: </label>{" "}
-            <span>{!input.name ? <Alerts msg="empty name field" type="warning" /> : Number(input.name) ? <Alerts msg="name must be a string" type="warning" /> : <Alerts msg="OK" type="succes" />}</span>
+            <span>
+              {!input.name ? (
+                <Alerts msg="empty name field" type="warning" />
+              ) : Number(input.name) ? (
+                <Alerts msg="name must be a string" type="warning" />
+              ) : (
+                <Alerts msg="OK" type="succes" />
+              )}
+            </span>
             <input
-            required
+              required
               className="name"
               type="text"
               value={input.name}
-              name="name" 
+              name="name"
               onChange={(e) => handleChange(e)}
             />
           </div>
 
           <div className="labels">
             <label>Height Max:</label>
-            <span>{!input.heightMax ? <Alerts msg="must be a number" type="warning" /> : <Alerts msg="OK" type="succes" /> }</span>
+            <span>
+              {!input.heightMax ? (
+                <Alerts msg="must be a number" type="warning" />
+              ) : (
+                <Alerts msg="OK" type="succes" />
+              )}
+            </span>
             <input
-            required
+              required
               className="height"
-              min="1" max="100" type="number"
+              min="1"
+              max="100"
+              type="number"
               value={input.heightMax}
               name="heightMax"
               onChange={(e) => handleChange(e)}
@@ -123,11 +138,19 @@ export default function DogCreate() {
 
           <div className="labels">
             <label>Height Min:</label>
-            <span>{!input.heightMin ? <Alerts msg="must be a number" type="warning" /> : <Alerts msg="OK" type="succes" /> }</span>
+            <span>
+              {!input.heightMin ? (
+                <Alerts msg="must be a number" type="warning" />
+              ) : (
+                <Alerts msg="OK" type="succes" />
+              )}
+            </span>
             <input
-            required
+              required
               className="height"
-              min="1" max="100" type="number"
+              min="1"
+              max="100"
+              type="number"
               value={input.heightMin}
               name="heightMin"
               onChange={(e) => handleChange(e)}
@@ -136,11 +159,19 @@ export default function DogCreate() {
 
           <div className="labels">
             <label>Weight Max:</label>
-            <span>{!input.weightMax ?<Alerts msg="must be a number" type="warning" />  : <Alerts msg="OK" type="succes" /> }</span>
+            <span>
+              {!input.weightMax ? (
+                <Alerts msg="must be a number" type="warning" />
+              ) : (
+                <Alerts msg="OK" type="succes" />
+              )}
+            </span>
             <input
-            required
+              required
               className="weight"
-              min="1" max="100" type="number"
+              min="1"
+              max="100"
+              type="number"
               value={input.weightMax}
               name="weightMax"
               onChange={(e) => handleChange(e)}
@@ -149,11 +180,19 @@ export default function DogCreate() {
 
           <div className="labels">
             <label>Weight Min:</label>
-            <span>{!input.weightMin ?  <Alerts msg="must be a number" type="warning" /> : <Alerts msg="OK" type="succes" /> }</span>
+            <span>
+              {!input.weightMin ? (
+                <Alerts msg="must be a number" type="warning" />
+              ) : (
+                <Alerts msg="OK" type="succes" />
+              )}
+            </span>
             <input
-            required
+              required
               className="weight"
-              min="1" max="100" type="number"
+              min="1"
+              max="100"
+              type="number"
               value={input.weightMin}
               name="weightMin"
               onChange={(e) => handleChange(e)}
@@ -162,11 +201,19 @@ export default function DogCreate() {
 
           <div className="labels">
             <label>Life Span aprox:</label>
-            <span>{!input.life_span ?  <Alerts msg="must be a number" type="warning" /> : <Alerts msg="OK" type="succes" /> }</span>
+            <span>
+              {!input.life_span ? (
+                <Alerts msg="must be a number" type="warning" />
+              ) : (
+                <Alerts msg="OK" type="succes" />
+              )}
+            </span>
             <input
               className="years"
               required
-              min="1" max="100" type="number"
+              min="1"
+              max="100"
+              type="number"
               value={input.life_span}
               name="life_span"
               onChange={(e) => handleChange(e)}
@@ -197,20 +244,21 @@ export default function DogCreate() {
             ))}
           </select>
           <ul>
-            {input.temperament.length!==0? 
+            {input.temperament.length !== 0 ? (
               <li>
-              {input.temperament.map((element) => {
-                return (
-                  <button
-                    className="btn_temperaments"
-                    key={element}
-                    onClick={(e) => handleDeleteTemperament(e)}
-                  >
-                    {element}
-                  </button>
-                );
-              })}
-            </li>: null}
+                {input.temperament.map((element) => {
+                  return (
+                    <button
+                      className="btn_temperaments"
+                      key={element}
+                      onClick={(e) => handleDeleteTemperament(e)}
+                    >
+                      {element}
+                    </button>
+                  );
+                })}
+              </li>
+            ) : null}
           </ul>
           <div className="fc_btn_group">
             <button className="fc_btn_create" type="submit">
@@ -225,3 +273,4 @@ export default function DogCreate() {
     </div>
   );
 }
+

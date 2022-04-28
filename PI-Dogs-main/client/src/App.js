@@ -4,10 +4,12 @@ import LandingPage from "./components/LandingPage";
 import Home from "./components/Home";
 import DogCreate from "./components/DogCreate";
 import Detail from "./components/Details";
+
 function App() {
   return (
     <div className="App">
       <Router>
+       
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route exact path="/home" element={<Home />} />
