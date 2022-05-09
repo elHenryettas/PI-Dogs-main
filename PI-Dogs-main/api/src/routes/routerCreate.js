@@ -33,10 +33,10 @@ router.post("/", async (req, res, next) => {
     NewDog.addTemperament(temperamentNewDog);
     res.send("Tu nueva raza perruna ha sido agregada");
   } catch (error) {
-    res.send(error);
+    console.log(error);
   }
 });
 
-
+/* CONETARIOS */
 
 module.exports = router;

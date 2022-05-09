@@ -1,0 +1,44 @@
+.input:focus::placeholder {
+  color: transparent;
+}
+.s_form{
+  position :absolute;
+  background-color:white;
+  padding: 0 5px;
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  border-radius: 20px;
+  box-sizing: border-box;
+  border: 1px solid gray;
+  justify-content: center;
+  & input{
+      font-size: 18px;
+      padding-left: 5px;
+      border-bottom-left-radius: 20px;
+      border-top-left-radius: 20px;
+      outline: none;
+      border:none;
+  }
+}
+
+.search_btn_icon{
+      display: inline-block;
+      width: 15px;
+      padding: 0 5px;
+      border-bottom-right-radius: 20px;
+      border-top-right-radius: 20px;
+      border: none;
+      height:15px;
+      background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iNTAiIGhlaWdodD0iNTAiCnZpZXdCb3g9IjAgMCAxNzIgMTcyIgpzdHlsZT0iIGZpbGw6IzAwMDAwMDsiPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0ibm9uemVybyIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIHN0cm9rZS1saW5lY2FwPSJidXR0IiBzdHJva2UtbGluZWpvaW49Im1pdGVyIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHN0cm9rZS1kYXNoYXJyYXk9IiIgc3Ryb2tlLWRhc2hvZmZzZXQ9IjAiIGZvbnQtZmFtaWx5PSJub25lIiBmb250LXdlaWdodD0ibm9uZSIgZm9udC1zaXplPSJub25lIiB0ZXh0LWFuY2hvcj0ibm9uZSIgc3R5bGU9Im1peC1ibGVuZC1tb2RlOiBub3JtYWwiPjxwYXRoIGQ9Ik0wLDE3MnYtMTcyaDE3MnYxNzJ6IiBmaWxsPSJub25lIj48L3BhdGg+PGcgaWQ9Im9yaWdpbmFsLWljb24iIGZpbGw9IiM2NjY2NjYiPjxwYXRoIGQ9Ik03Mi4yNCwxMC4zMmMtMzIuMzMwNjIsMCAtNTguNDgsMjYuMTQ5MzggLTU4LjQ4LDU4LjQ4YzAsMzIuMzMwNjMgMjYuMTQ5MzgsNTguNDggNTguNDgsNTguNDhjMTEuNTQyODEsMCAyMi4yMjU2MywtMy4zODYyNSAzMS4yODI1LC05LjEzNzVsNDIuMjQ3NSw0Mi4yNDc1bDE0LjYyLC0xNC42MmwtNDEuNzEsLTQxLjYwMjVjNy40OTgxMywtOS44MzYyNSAxMi4wNCwtMjIuMDI0MDYgMTIuMDQsLTM1LjM2NzVjMCwtMzIuMzMwNjIgLTI2LjE0OTM3LC01OC40OCAtNTguNDgsLTU4LjQ4ek03Mi4yNCwyNC4wOGMyNC43NjUzMSwwIDQ0LjcyLDE5Ljk1NDY5IDQ0LjcyLDQ0LjcyYzAsMjQuNzY1MzEgLTE5Ljk1NDY5LDQ0LjcyIC00NC43Miw0NC43MmMtMjQuNzY1MzEsMCAtNDQuNzIsLTE5Ljk1NDY5IC00NC43MiwtNDQuNzJjMCwtMjQuNzY1MzEgMTkuOTU0NjksLTQ0LjcyIDQ0LjcyLC00NC43MnoiPjwvcGF0aD48L2c+PC9nPjwvc3ZnPg==') 50% 50% no-repeat;
+      background-size: cover; 
+      background-position: center;
+}
+
+@media screen and(min-width: 320px) and(max-width: 500px){
+  .s_form{
+      & input{
+          width: 150px;
+      }
+  }
+}

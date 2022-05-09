@@ -1,10 +1,11 @@
 .paginado {
+  
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px;
   list-style-type: none;
-  background-color: #946c6c;
+  background-color: transparent;
   font-weight: 600;
 }
 
@@ -19,7 +20,8 @@
   border: solid black 1px;
   text-align: center;
   border-radius: 6px;
-  background-color: tomato;
+  background-color: rgba(85, 80, 79, 0.368);
+  min-width: 1em;
 }
 .numberActual {
   cursor: pointer;
@@ -28,15 +30,32 @@
   padding-inline-end: 0.4%;
   padding-left: 0.3em;
   margin: 0.5em;
-  
+  min-width: 1em;
   border: solid black 1px;
   text-align: center;
   border-radius: 6px;
-  background-color: rgba(255, 99, 71, 0.392);
+  background-color: rgba(223, 223, 233, 0.483);
 }
-
-.numbers:hover {
-  background-color: #478282;
+.numberActual:hover{
+  background-color: #546fb9;
   color: rgb(255, 255, 255);
   text-shadow: black 4px;
+}
+.numbers:hover {
+  background-color: #546fb9;
+  color: rgb(255, 255, 255);
+  text-shadow: black 4px;
+}
+.arrow{
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  padding-inline-end: 0.4%;
+  padding-left: 0.3em;
+  margin: 0.5em;
+text-align: center;
+  border: solid black 1px;
+  text-align: center;
+  border-radius: 6px;
+  background-color: rgba(12, 51, 78, 0.582);
 }

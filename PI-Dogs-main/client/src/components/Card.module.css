@@ -6,7 +6,7 @@
 }
 .card {
   display: grid;
-  background-color: tomato;
+  background-color: rgba(255, 99, 71, 0.44);
   /* justify-content: center; */
   position: relative;
   font-size: 10px;

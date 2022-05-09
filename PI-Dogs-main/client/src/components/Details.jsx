@@ -23,7 +23,7 @@ export default function Detail() {
   function handleDetele(e) {
     e.preventDefault();
     dispatch(deleteDogs(id));
-    alert("El perro ha sido borrado");
+    alert("Dog successfully deleted");
     navigate("/home");
   }
 
@@ -34,16 +34,13 @@ export default function Detail() {
   const myDog = useSelector((state) => state.details);
 
   return (
-    <div id="detailsSection">
+    <div id="detailsSection" className="home">
       {myDog.id ? (
         <div className="conteinerDetail">
           <section>
             <img src={myDog.image} alt={myDog.name} />
           </section>
           <section id="dataDetails">
-            {myDog.id.length > 5 ? (
-              <button onClick={(e) => handleDetele(e)}> BORRAR PERRACO</button>
-              ) : null}
             <h2 id="nameDetailsRace">I am {myDog.name} </h2>
             <hr />
             <div id="heightDetail">
@@ -66,12 +63,15 @@ export default function Detail() {
               <h5>Temperaments</h5>
               <span>{myDog.temperament}</span>
             </div>
+              {myDog.id.length > 5 ? (
+                <button className="btn_back" onClick={(e) => handleDetele(e)}>Delete Dog</button>
+                ) : null}
           </section>
               <button className="btn_back" onClick={(e) => handleClick(e)}>Back Home</button>
         </div>
       ) : (
-        <Loader />
-      )}
+        <div className="home">{<Loader />}</div>
+        )}
     </div>
   );
 }

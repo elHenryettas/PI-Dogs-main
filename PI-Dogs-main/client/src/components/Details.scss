@@ -5,8 +5,38 @@
     justify-content: center;
     align-items:center;
 }
+.home::before{background-color: rgba(80, 48, 26,0.5);animation-name: circle-one;
+    animation-duration:10s;
+    animation-delay: 1s;
+    animation-iteration-count: infinite;
+    @keyframes circle-one {
+      0%{
+          padding: 10%;
+      }
+      50%{
+          padding: 15%;
+      }
+      100%{
+          padding: 10%;
+      }
+    }
+
+}
+.home::after{
+    content: "";
+    position: fixed;
+    z-index: -2;
+    left: 0;
+    top: 0;
+    background-color: rgba(80, 48, 26,0.8);
+    padding: 25%;
+    border-bottom-right-radius: 60em;
+    
+  
+  }
 .conteinerDetail{
-    background-color: rgba(80, 48, 26,0.5);
+    
+    
     backdrop-filter: blur(15px);
     display:inline-flex;
     width: 100%;

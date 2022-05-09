@@ -14,9 +14,10 @@ body {
 
 .home{
   position: relative;
-  height: auto;
+  background-color: rgba(80, 48, 26,0.5);
+  height: auto; 
 }
-.home::before{
+/* .home::before{
   content:" ";
   z-index: -1;
   position: fixed;
@@ -31,16 +32,16 @@ body {
   animation-iteration-count: infinite;
   @keyframes circle-one {
     0%{
-        padding: 10%;
+      padding: 10%;
     }
     50%{
-        padding: 15%;
+      padding: 15%;
     }
     100%{
-        padding: 10%;
+      padding: 10%;
     }
   }
-
+  
 }
 
 
@@ -55,4 +56,4 @@ body {
   border-bottom-right-radius: 60em;
   
 
-}
+} */

@@ -47,7 +47,7 @@ export default function Paginado({ dogsPerPage, allDogs, paginado }) {
   return (
     <nav>
       <ul className={style.paginado}>
-        <li className={style.numbers} onClick={() => handleArrowLess()}>
+        <li className={style.arrow} onClick={() => handleArrowLess()}>
           <a>←</a>
         </li>
 
@@ -62,7 +62,7 @@ export default function Paginado({ dogsPerPage, allDogs, paginado }) {
           </li>
         ))}
 
-        <li className={style.numbers} onClick={() => handleArrowMore()}>
+        <li className={style.arrow} onClick={() => handleArrowMore()}>
           <a>→</a>
         </li>
       </ul>

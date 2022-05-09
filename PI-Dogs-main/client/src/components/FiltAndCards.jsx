@@ -29,7 +29,7 @@ export default function () {
   const allDogs = useSelector((state) => state.dogs);
   const allTemps = useSelector((state) => state.temperaments);
   const [currentPage, setCurrentPage] = useState(1);
-  const [dogsPerPage, setDogsPerPage] = useState(14);
+  const [dogsPerPage, setDogsPerPage] = useState(12);
   const indexOfLastDog = currentPage * dogsPerPage;
   const indexOfFirstDog = indexOfLastDog - dogsPerPage;
   const currenctDogs = allDogs.slice(indexOfFirstDog, indexOfLastDog);
@@ -71,27 +71,28 @@ export default function () {
   };
 
   return (
-    <div>
+    <div className={style.all}>
       <div>
-        <select value="disabled" onChange={(e) => handleFilterDogsByAOrZ(e)}>
+        <select className={style.filtros} value="disabled" onChange={(e) => handleFilterDogsByAOrZ(e)}>
           <option value="">ALPHABETICAL ORDER</option>
           <option value={ASCENDENT}>A to Z</option>
           <option value={DESCENDENT}>Z to A</option>
         </select>
 
-        <select value="disabled" onChange={(e) => handleFilterByWeight(e)}>
+        <select className={style.filtros} value="disabled" onChange={(e) => handleFilterByWeight(e)}>
           <option value="">WEIGHT FILTER</option>
           <option value={WEIGHTMIN}>Peso Minimo</option>
           <option value={WEIGHTMAX}>Peso Maximo</option>
         </select>
 
-        <select value="disabled" onChange={(e) => handleFilterByDb(e)}>
+        <select className={style.filtros} value="disabled" onChange={(e) => handleFilterByDb(e)}>
           <option value="">OFICIAL/CREATED</option>
           <option value={OFICIALDOGS}>Perros Oficiales</option>
           <option value={DBDOGS}>Perros creados</option>
         </select>
 
         <select
+        className={style.filtros}
           value="disabled"
           onChange={(e) => handleGetAndFilterTemperaments(e)}
         >
@@ -121,7 +122,7 @@ export default function () {
               <div key={e.id}>
                 <Card
                   id={e.id}
-                  weightMin={e.weightMin}
+                  
                   name={e.name}
                   image={e.image}
                   temperament={e.temperament}

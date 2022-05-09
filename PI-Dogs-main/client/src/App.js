@@ -4,17 +4,17 @@ import LandingPage from "./components/LandingPage";
 import Home from "./components/Home";
 import DogCreate from "./components/DogCreate";
 import Detail from "./components/Details";
-
+import MercadoPago from "./MercadoPago/MercadoPago"
 function App() {
   return (
     <div className="App">
       <Router>
-       
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route exact path="/home" element={<Home />} />
           <Route path="/dog" element={<DogCreate />} />
           <Route exact path="/home/:id" element={<Detail />} />
+          <Route path="/MercadoPago" element = {<MercadoPago />} />
         </Routes>
       </Router>
     </div>

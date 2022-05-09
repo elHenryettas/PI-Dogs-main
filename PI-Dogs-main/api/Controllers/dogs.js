@@ -10,12 +10,14 @@ const getInfoApi = async () => {
     const heightMax = parseInt(height[1]);
     const weightMin = parseInt(weight[0].trim());
     const weightMax = parseInt(weight[1]);
+    const Precio = parseInt(weight[1]);
     const defaultTemp = e.temperament
       ? ` ${e.temperament}`
       : "Active, Agile, Confident, Fearless, Protective, Athletic";
     return {
       id: `${e.id}`,
       name: e.name,
+      Precio: Precio ? Precio : 20,
       heightMax: heightMax ? heightMax : 35,
       heightMin: heightMin ? heightMin : 30,
       weightMax: weightMax ? weightMax : 32,
@@ -51,7 +53,7 @@ const getAllInfo = async () => {
       weightMax: e.weightMax,
       life_span: e.life_span,
       image: e.image,
-       
+
       temperament: e.temperaments
         .map((e) => {
           return e.name;

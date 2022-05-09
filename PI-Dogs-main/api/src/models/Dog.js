@@ -11,6 +11,10 @@ module.exports = (sequelize) => {
         primaryKey: true,
         defaultValue: DataTypes.UUIDV4,
       },
+      Precio: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
       name: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -34,7 +38,7 @@ module.exports = (sequelize) => {
       life_span: {
         type: DataTypes.STRING,
       },
-    
+
       image: {
         type: DataTypes.STRING,
       },

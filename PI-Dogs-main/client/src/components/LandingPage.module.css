@@ -10,11 +10,13 @@ body {
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lobster&family=Pacifico&family=Roboto:wght@300&display=swap");
 /*font-family: 'Roboto', sans-serif;font-family: "Pacifico", cursive;*/
+*{
 
+ 
+}
 body {
   box-sizing: border-box;
- 
-  /* align-items: center; */
+
   font-family: "Lobster";
 }
 
@@ -74,4 +76,3 @@ body {
   border-radius: 15px;
   overflow-x: hidden;
 }
-

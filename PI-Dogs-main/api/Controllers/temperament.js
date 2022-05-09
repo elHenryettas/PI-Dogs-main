@@ -9,11 +9,9 @@ router.get("/", async (req, res) => {
       ...new Set(
         allDogs
           .map((e) => e.temperament)
-
           /* todos los t. en un array cuyos  son str */
           .join()
           .split(",")
-
         /* un array donde cada elemento es un unico temperamento en str */
       ),
     ]
