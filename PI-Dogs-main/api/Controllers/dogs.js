@@ -3,7 +3,7 @@ const { Dog, Temperament } = require("../src/db");
 
 const getInfoApi = async () => {
   const apiUrl = await axios.get("https://api.thedogapi.com/v1/breeds");
-  const dataApi = await apiUrl.data.map((e) => {
+  const dataApi = apiUrl.data.map((e) => {
     const height = e.height.metric.split("-");
     const weight = e.weight.metric.split("-");
     const heightMin = parseInt(height[0].trim());
@@ -14,6 +14,7 @@ const getInfoApi = async () => {
     const defaultTemp = e.temperament
       ? ` ${e.temperament}`
       : "Active, Agile, Confident, Fearless, Protective, Athletic";
+      
     return {
       id: `${e.id}`,
       name: e.name,
