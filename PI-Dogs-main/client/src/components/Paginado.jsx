@@ -11,7 +11,7 @@ export default function Paginado({ dogsPerPage, allDogs, paginado }) {
 
   const page = pageNumbers.slice(
     actual + 4 > pageNumbers.length
-      ? pageNumbers.length -6
+      ? pageNumbers.length - 6
       : actual === 1
       ? actual - 1
       : actual === 2
@@ -43,13 +43,17 @@ export default function Paginado({ dogsPerPage, allDogs, paginado }) {
       setActual(actual - 1);
     }
   }
-
+  console.log(actual);
   return (
     <nav>
       <ul className={style.paginado}>
-        <li className={style.arrow} onClick={() => handleArrowLess()}>
-          <a>←</a>
-        </li>
+        {actual === 1 ? <li className={style.arrowTransparent}>
+            <a>&lt; Previous</a>
+          </li> : (
+          <li className={style.arrow} onClick={() => handleArrowLess()}>
+            <a>&lt; Previous</a>
+          </li>
+        )}
 
         {page?.map((number) => (
           <li
@@ -62,9 +66,14 @@ export default function Paginado({ dogsPerPage, allDogs, paginado }) {
           </li>
         ))}
 
-        <li className={style.arrow} onClick={() => handleArrowMore()}>
-          <a>→</a>
+        {actual === pageNumbers.length ? <li className={style.arrowTransparent}>
+          <a>Next page ></a>
+        </li> : (
+          <li className={style.arrow} onClick={() => handleArrowMore()}>
+          <a>Next page ></a>
         </li>
+        )}
+        
       </ul>
     </nav>
   );

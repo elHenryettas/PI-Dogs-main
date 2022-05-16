@@ -7,6 +7,10 @@
   list-style-type: none;
   background-color: transparent;
   font-weight: 600;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 .numbers {
@@ -57,5 +61,21 @@ text-align: center;
   border: solid black 1px;
   text-align: center;
   border-radius: 6px;
-  background-color: rgba(12, 51, 78, 0.582);
+  font-family: 'Courier New', Courier, monospace;
+  background-color: rgba(85, 80, 79, 0.368);
+  
+}
+.arrowTransparent{
+color:rgba(255, 255, 255, 0);
+  display: flex;
+  justify-content: center;
+  padding-inline-end: 0.4%;
+  padding-left: 0.3em;
+  margin: 0.5em;
+text-align: center;
+  border: solid rgba(0, 0, 0, 0) 1px;
+  text-align: center;
+  border-radius: 6px;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: rgba(85, 80, 79, 0);
 }

@@ -14,7 +14,7 @@ const getInfoApi = async () => {
     const defaultTemp = e.temperament
       ? ` ${e.temperament}`
       : "Active, Agile, Confident, Fearless, Protective, Athletic";
-      
+
     return {
       id: `${e.id}`,
       name: e.name,
