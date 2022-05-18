@@ -3,8 +3,8 @@ const routerDog = require("./routerDog");
 const routerTemperament = require("./routerTemperaments");
 const routerCreate = require("./routerCreate");
 const deleteDog = require("./deleteDog");
-const mercadoPago = require("./mercadoPago");
-const Feedback = require("./MPFeedback");
+
+
 // const { validatorDog } = require("../validator/validatorDog");
 
 // Importar todos los routers;
@@ -16,7 +16,7 @@ const Feedback = require("./MPFeedback");
 router.use("/dog", /* validatorDog, */ routerCreate);
 router.use("/dogs", routerDog);
 router.use("/temperament", routerTemperament);
-router.use("/delete", deleteDog);
-router.use("/mercadoPago", mercadoPago)
-router.use("/feedback", Feedback)
+
+
+
 module.exports = router;

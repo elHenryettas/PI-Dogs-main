@@ -9,15 +9,11 @@ router.get("/", async (req, res) => {
       ...new Set(
         allDogs
           .map((e) => e.temperament)
-          /* todos los t. en un array cuyos  son str */
           .join()
-          .split(",")
-        /* un array donde cada elemento es un unico temperamento en str */
-      ),
-    ]
-      .sort()
-      .filter((e) => e && e[0] === " ");
-    /* ordena alfabeticamente y elimina strings vacios(solo hay uno pero bueno) */
+          .split(",")),
+    ].sort()
+      
+    
 
     const clearTemp = temperament.map((e) => e.trim());
 
