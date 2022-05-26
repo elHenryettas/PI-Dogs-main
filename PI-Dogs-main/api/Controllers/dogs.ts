@@ -1,5 +1,5 @@
 const axios = require("axios");
-const { Dog, Temperament } = require("../src/db");
+const { Dog, Temperament } = require("../src/db.js");
 
 const getInfoApi = async () => {
   const apiUrl = await axios.get("https://api.thedogapi.com/v1/breeds");
