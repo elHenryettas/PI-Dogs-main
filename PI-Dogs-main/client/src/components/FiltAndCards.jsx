@@ -16,7 +16,7 @@ import {
   filterDogsByAOrZ,
   filterDogsByBd,
   filterDogsByTemperament,
-} from "../actions";
+} from "../actions/index.ts";
 
 import style from "./FiltAndCards.module.css";
 import Paginado from "./Paginado";

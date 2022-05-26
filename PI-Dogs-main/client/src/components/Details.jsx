@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { cleanDetail, getDetail, cleanDog, deleteDogs } from "../actions";
+import { cleanDetail, getDetail, cleanDog, deleteDogs } from "../actions/index.ts";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Loader from "./Loader";
