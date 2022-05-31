@@ -12,9 +12,7 @@ router.get("/", async (req, res) => {
           .join()
           .split(",")),
     ].sort()
-      
     
-
     const clearTemp = temperament.map((e) => e.trim());
 
     for (let i = 0; i < clearTemp.length; i++) {

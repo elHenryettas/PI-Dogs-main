@@ -17,7 +17,6 @@ router.use("/dog", /* validatorDog, */ routerCreate);
 router.use("/dogs", routerDog);
 router.use("/temperament", routerTemperament);
 
-router.use("/delete", deleteDog); 
 
 
 module.exports = router;
