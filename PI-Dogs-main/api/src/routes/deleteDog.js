@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { Dog } = require("../db.js");
+
 router.delete("/:id", (req,res) =>{
     const {id} = req.params;
     if(id){

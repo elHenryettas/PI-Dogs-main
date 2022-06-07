@@ -23,6 +23,7 @@ router.get("/", async (req, res) => {
     }
 
     const AllTemperament = await Temperament.findAll();
+    
     res.send(AllTemperament);
   } catch (error) {
     console.log(error);
