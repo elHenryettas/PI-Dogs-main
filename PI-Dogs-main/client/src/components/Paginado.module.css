@@ -41,12 +41,12 @@
   background-color: rgba(223, 223, 233, 0.483);
 }
 .numberActual:hover{
-  background-color: #546fb9;
+  background-color: rgba(85, 80, 79, 0.368);
   color: rgb(255, 255, 255);
   text-shadow: black 4px;
 }
 .numbers:hover {
-  background-color: #546fb9;
+  background-color: rgba(85, 80, 79, 0.368);
   color: rgb(255, 255, 255);
   text-shadow: black 4px;
 }

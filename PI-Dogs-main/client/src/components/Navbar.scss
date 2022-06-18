@@ -12,7 +12,7 @@ margin-bottom: 2em;
   }
   .nav {
     margin-bottom: 2em;
-    background-color: rgba(52, 45, 45, 0.414);
+    background-color: rgba(0, 0, 0, 0.636);
     border: 1px solid transparent;
     position: relative;
     margin: 0 auto;
@@ -22,7 +22,6 @@ margin-bottom: 2em;
     justify-content: center;
     align-items: center;
     display: flex;
-    background-color: rgba(52, 45, 45, 0.414);
     min-width: 95%;
     padding: 0;
     justify-content: space-around;
@@ -60,13 +59,13 @@ margin-bottom: 2em;
   .link {
     font-size: 1.1em;
     font-weight: 900;
-    color: rgba(80, 48, 26, 1);
+    color: rgb(192, 96, 32);
     text-decoration: none;
     padding: 0.5em 1em;
     border: 4px solid transparent;
     margin: 0;
     border-radius: 10em;
-    border: 4px solid rgba(80, 48, 26, 1);
+    border: 4px solid rgb(192, 96, 32);
     font-family: 'Courier New', Courier, monospace;
     &:hover {
       color: rgb(0, 0, 0);

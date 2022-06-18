@@ -1,36 +1,63 @@
 .img {
   margin-top: 5px;
   width: 15em;
+  border-radius: 0.7rem;
   height: 10em;
   
 }
 .card {
+  grid-template-columns: auto auto auto auto;
+  grid-template-rows: auto auto;
   display: grid;
+  justify-items: center;
   background-color: rgba(255, 99, 71, 0.44);
   /* justify-content: center; */
   position: relative;
-  font-size: 10px;
-  width: 200px;
-  height: 200px;
-  margin: 5px;
-  border-radius: 10px;
-  padding: auto;
-  margin: auto;
+  
+  width:21rem;
+  height: 11rem;
+  border-radius: 0.7rem;
+  margin-left:1rem ;
+  margin-bottom:0.6rem ;
+
+ 
+  font-family: 'Courier New', Courier, monospace;
   border: solid black 1px;
+  font-weight:900;
+  font-size: 0.80em;
 }
-h3 {
+
+.imgConteiner{
   margin-top: 1rem;
+  align-items: center;
+}
+
+h3 {
+  margin-top: 0.8rem;
+  font-size:medium;
+}
+h4{
+  margin-bottom: -0.5rem;
+  margin-top: -0.5rem;
+}
+p{
+
+  border-radius: 0.7rem;
+  border: solid black 1px;
+  background-color: rgba(88, 63, 112, 0.275);
+  margin-right: 0.34rem;
 }
 .btn{
   border-radius: 3px;
   border: solid black 1px;
+  background-color: rgba(88, 63, 112, 0.275);
   cursor: pointer;
 }
 .btn:hover{
-  background-color: black;
+  
   border-radius: 3px;
   border: solid black 1px;
-  color: blanchedalmond;
+ 
 }
 /* .imgConteiner{
   width: 150px;

@@ -6,7 +6,8 @@ body {
   margin-top: 1.5em;
 }
 .filtros{
-  margin-right: 0.5em;
+  margin-right: 1em;
+  font-size:medium;
 }
 /* 
 .cardsConteiner{
@@ -25,17 +26,14 @@ body {
 } */
 
 .cardsConteiner {
-  
+  grid-template-columns: auto auto auto auto;
+  grid-template-rows: auto auto;
   display: grid;
-  overflow: hidden;
-  width: 100%;
-  grid-auto-rows: 10rem;
-  grid-template-columns: repeat(auto-fill,minmax(18rem,1fr));
-  gap:1em;
-  justify-content: space-around;
-  background-color: #50301a51;
-  padding:3em 4em;
-  border-radius: 5px;
-  backdrop-filter: blur(15px);
-  height:auto;
+  justify-items: center;
+  /* grid-column-gap: 80px; */
+  
+  grid-row-gap: 40px;
+  justify-content: center;
+  align-content: center;
+  margin-top: 2rem;
 }
